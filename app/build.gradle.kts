@@ -40,7 +40,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("com.github.dhaval2404:imagepicker:2.1")
-
+    implementation("com.google.android.material:material:1.9.0")
     implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
