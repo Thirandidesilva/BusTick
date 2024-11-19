@@ -1,6 +1,5 @@
 package com.example.proj;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -8,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import java.util.Objects;
 
 public class BusOwnerRegister extends AppCompatActivity {
 
@@ -23,6 +20,5 @@ public class BusOwnerRegister extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getColor(R.color.yellow)));
     }
 }

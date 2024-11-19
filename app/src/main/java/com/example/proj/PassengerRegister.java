@@ -1,7 +1,6 @@
 package com.example.proj;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-
-import java.util.Objects;
 
 public class PassengerRegister extends AppCompatActivity {
     private ImageView imageView;
@@ -33,8 +30,6 @@ public class PassengerRegister extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getColor(R.color.yellow)));
 
          imageView = findViewById(R.id.image_view1);
          button = findViewById(R.id.floatingActionButton);
