@@ -13,3 +13,107 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Logs
+*.log
+*.log.*
+
+# Compiled class files
+*.class
+
+# Java VM crash logs
+hs_err_pid*
+
+# Compiled Java files
+/bin/
+/build/
+
+# Generated files by IDEs
+/.idea/
+/.gradle/
+/out/
+/*.iml
+
+# Gradle cache and wrapper files
+.gradle/
+/build/
+/**/build/
+!.gradle-wrapper.jar
+.gradle/cache/
+/.gradle/daemon/
+/.gradle/notifications/
+/.gradle/wrapper/dists/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Exclude IntelliJ IDEA project files
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Exclude Eclipse project files
+.project
+.classpath
+.settings/
+.factorypath
+
+# Exclude NetBeans project files
+nbproject/
+nbproject/private/
+build/
+dist/
+
+# Maven dependencies
+.mvn/
+target/
+
+# Other files to ignore
+*.war
+*.ear
+*.jar
+*.zip
+*.gz
+*.tgz
+*.xz
+*.bz2
+
+# Node modules (if the app uses JavaScript/TypeScript as well)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Test reports
+/test-results/
+coverage/
+*.exec
+*.out
+*.coverage
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Exclude IDE-specific files for VSCode
+.vscode/
+
+# Ignore logs
+logs/
+*.log
+npm-debug.log*
+
+# Ignore coverage
+coverage/
+lcov-report/
+
+# Ignore caches and lock files
+*.lock

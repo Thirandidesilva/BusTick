@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.movebtn);
+        Button button = findViewById(R.id.signupbtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
