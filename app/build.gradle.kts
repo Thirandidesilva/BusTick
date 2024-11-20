@@ -40,8 +40,12 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("com.github.dhaval2404:imagepicker:2.1")
-
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.navigation:navigation-fragment:2.7.3")
+    implementation("androidx.navigation:navigation-ui:2.7.3")
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
     implementation(libs.play.services.cast.framework)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
