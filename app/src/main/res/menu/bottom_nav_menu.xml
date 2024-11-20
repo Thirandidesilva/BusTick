@@ -2,17 +2,17 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="" />
     <item
-        android:id="@+id/star"
-        android:icon="@drawable/ic_star"
-        android:title="Star" />
+        android:id="@+id/booking"
+        android:icon="@drawable/ic_booking"
+        android:title="" />
     <item
-        android:id="@+id/book"
-        android:icon="@drawable/ic_book"
-        android:title="Book" />
+        android:id="@+id/message"
+        android:icon="@drawable/ic_message"
+        android:title="" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
-        android:title="Profile" />
+        android:title="" />
 </menu>

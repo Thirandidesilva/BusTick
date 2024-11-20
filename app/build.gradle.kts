@@ -41,6 +41,8 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.navigation:navigation-fragment:2.7.3")
+    implementation("androidx.navigation:navigation-ui:2.7.3")
     implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
