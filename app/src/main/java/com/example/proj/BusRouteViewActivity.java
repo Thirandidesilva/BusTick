@@ -1,21 +1,20 @@
 package com.example.proj;
-import com.example.proj.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class BusRouteViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_bus_route_view);
 
         // Initialize BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -40,20 +39,18 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
             }
-
             return false;
         });
 
-        // Add a click listener to the TextView with ID 'pick_location'
-        TextView pickLocationTextView = findViewById(R.id.pick_location);
+        TextView pickLocationTextView = findViewById(R.id.view_details_btn);
         pickLocationTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start BookingActivity
-                Intent intent = new Intent(HomeActivity.this, SelectBusActivity.class);
+                Intent intent = new Intent(BusRouteViewActivity.this, SeatBookActivity.class);
                 startActivity(intent);
             }
         });
+
 
     }
 }
