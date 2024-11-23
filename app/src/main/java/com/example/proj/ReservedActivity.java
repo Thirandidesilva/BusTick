@@ -1,26 +1,32 @@
 package com.example.proj;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class BusRouteViewActivity extends AppCompatActivity {
+public class ReservedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bus_route_view);
-
-        // Initialize BottomNavigationView
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_reserved);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the selected item (optional, useful for showing the selected item after navigating back)
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.reserved);
 
         // Handle navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -39,18 +45,8 @@ public class BusRouteViewActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
             }
+
             return false;
         });
-
-        TextView pickLocationTextView = findViewById(R.id.view_details_btn);
-        pickLocationTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BusRouteViewActivity.this, SeatBookActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }

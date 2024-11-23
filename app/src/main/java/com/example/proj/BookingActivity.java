@@ -34,7 +34,7 @@ public class BookingActivity extends AppCompatActivity implements OnMapReadyCall
 
         // Initialize the Bottom Navigation View
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.booking); // Set the selected item
+        bottomNavigationView.setSelectedItemId(R.id.home); // Set the selected item
 
         // Handle navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -42,8 +42,8 @@ public class BookingActivity extends AppCompatActivity implements OnMapReadyCall
             if (id == R.id.home) {
                 startActivity(new Intent(this, HomeActivity.class));
                 return true;
-            } else if (id == R.id.booking) {
-                startActivity(new Intent(this, BookingActivity.class));
+            } else if (id == R.id.reserved) {
+                startActivity(new Intent(this, ReservedActivity.class));
                 return true;
             } else if (id == R.id.message) {
                 startActivity(new Intent(this, MessageActivity.class));

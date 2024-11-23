@@ -29,8 +29,8 @@ public class SelectBusActivity extends AppCompatActivity {
             if (id == R.id.home) {
                 startActivity(new Intent(this, HomeActivity.class));
                 return true;
-            } else if (id == R.id.booking) {
-                startActivity(new Intent(this, BookingActivity.class));
+            } else if (id == R.id.reserved) {
+                startActivity(new Intent(this, ReservedActivity.class));
                 return true;
             } else if (id == R.id.message) {
                 startActivity(new Intent(this, MessageActivity.class));

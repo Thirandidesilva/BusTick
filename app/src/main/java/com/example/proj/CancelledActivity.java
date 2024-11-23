@@ -11,34 +11,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class SeatBookActivity extends AppCompatActivity {
+import java.util.concurrent.CompletionException;
+
+public class CancelledActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_seat_book);
+        setContentView(R.layout.activity_cancelled);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button button = findViewById(R.id.bookbtn);
+        Button button = findViewById(R.id.back_to_home);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CompletedActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button button2 = findViewById(R.id.cancelbtn);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CancelledActivity.class);
+                Intent intent = new Intent(CancelledActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
     }
+
 }
