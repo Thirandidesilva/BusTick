@@ -10,6 +10,7 @@
     <!-- Content area for BookingActivity -->
 
     <!-- Bottom Navigation -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="0dp"
@@ -19,69 +20,55 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <!-- Greeting Image -->
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.132"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/hellotext" />
 
         <!-- Greeting Text -->
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:fontFamily="@font/poppins"
-            android:text="Good Morning"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Location Select Image -->
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="132dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/locationselect" />
 
-        <!-- Search Box -->
-        <SearchView
-            android:layout_width="319dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="232dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- MapView -->
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/map_view"
             android:layout_width="414dp"
-            android:layout_height="326dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="511dp"
+            android:layout_marginBottom="32dp"
             android:background="@color/white"
             android:contentDescription="Interactive map view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView5"
-            app:layout_constraintVertical_bias="0.826" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/busselectedbackground" />
+
+        <Button
+            android:id="@+id/view_details_btn"
+            android:layout_width="357dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#F7D786"
+            android:drawablePadding="8dp"
+            android:gravity="start|center_vertical"
+            android:paddingStart="20dp"
+            android:text="View Bus Details"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

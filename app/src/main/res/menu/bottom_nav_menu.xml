@@ -4,7 +4,7 @@
         android:icon="@drawable/ic_home"
         android:title="" />
     <item
-        android:id="@+id/booking"
+        android:id="@+id/reserved"
         android:icon="@drawable/ic_booking"
         android:title="" />
     <item

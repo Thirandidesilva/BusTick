@@ -1,27 +1,32 @@
 package com.example.proj;
-import com.example.proj.R;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class ReservedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        // Initialize BottomNavigationView
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_reserved);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the selected item (optional, useful for showing the selected item after navigating back)
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.reserved);
 
         // Handle navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -43,17 +48,5 @@ public class HomeActivity extends AppCompatActivity {
 
             return false;
         });
-
-        // Add a click listener to the TextView with ID 'pick_location'
-        TextView pickLocationTextView = findViewById(R.id.pick_location);
-        pickLocationTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start BookingActivity
-                Intent intent = new Intent(HomeActivity.this, SelectBusActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 }
