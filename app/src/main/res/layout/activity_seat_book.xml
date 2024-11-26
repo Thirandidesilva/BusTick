@@ -27,7 +27,7 @@
                 android:id="@+id/driver_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/baseline_person_24"
+                android:src="@drawable/ic_profile"
 
                 android:layout_marginEnd="8dp" />
 
@@ -59,7 +59,7 @@
                 android:id="@+id/details_arrow"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_resized"
+                android:src="@drawable/ic_arrow"
                 />
         </LinearLayout>
 
@@ -178,7 +178,8 @@
                 android:columnCount="2"
                 android:padding="8dp"
                 android:alignmentMode="alignMargins"
-                android:rowOrderPreserved="true">
+                android:rowOrderPreserved="true"
+                >
 
                 <!-- Total Seats List (1-12) -->
                 <TextView
