@@ -27,7 +27,7 @@
                 android:id="@+id/driver_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_profile"
+                android:src="@drawable/baseline_person_24"
 
                 android:layout_marginEnd="8dp" />
 
@@ -59,8 +59,8 @@
                 android:id="@+id/details_arrow"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_arrow"
-                />
+                android:src="@drawable/baseline_arrow_forward_24"
+                android:tint="#757575" />
         </LinearLayout>
 
         <!-- Ratings Section -->
@@ -84,31 +84,31 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_star_24"
-                />
+                 />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_star_24"
-                />
+                 />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_star_24"
-                />
+                 />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_star_half_24"
-                />
+                 />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_star_outline_24"
-                />
+                 />
 
             <TextView
                 android:id="@+id/rating_score"
@@ -178,8 +178,7 @@
                 android:columnCount="2"
                 android:padding="8dp"
                 android:alignmentMode="alignMargins"
-                android:rowOrderPreserved="true"
-                >
+                android:rowOrderPreserved="true">
 
                 <!-- Total Seats List (1-12) -->
                 <TextView
@@ -447,6 +446,6 @@
             android:layout_height="wrap_content"
             android:background="#F28B82"
             android:text="Cancel Booking"
-            />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>
