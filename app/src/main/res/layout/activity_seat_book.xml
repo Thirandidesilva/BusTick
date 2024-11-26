@@ -446,6 +446,6 @@
             android:layout_height="wrap_content"
             android:background="#F28B82"
             android:text="Cancel Booking"
-            android:textColor="#FFFFFF" />
+            />
     </LinearLayout>
 </ScrollView>
