@@ -1,5 +1,6 @@
 package com.example.proj;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Booking_Step_twoActivity extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

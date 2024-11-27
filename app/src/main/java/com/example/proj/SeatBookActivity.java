@@ -1,5 +1,6 @@
 package com.example.proj;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SeatBookActivity extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public class SeatBookActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.bookbtn);
+        Button button = findViewById(R.id.btn_book);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,7 +34,7 @@ public class SeatBookActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button button2 = findViewById(R.id.cancelbtn);
+        Button button2 = findViewById(R.id.btn_cancel);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
