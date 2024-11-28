@@ -36,6 +36,17 @@ public class LoginSelectionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Find the TextView and set a click listener
+        TextView btn_bd = findViewById(R.id.btn_bd);
+        btn_bd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginSelectionActivity.this, DriverBusRouteViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
