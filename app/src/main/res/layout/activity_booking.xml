@@ -71,17 +71,16 @@
         <!-- MapView -->
         <com.google.android.gms.maps.MapView
             android:id="@+id/map_view"
-            android:layout_width="414dp"
-            android:layout_height="326dp"
+            android:layout_width="415dp"
+            android:layout_height="430dp"
             android:layout_marginTop="16dp"
             android:background="@color/white"
             android:contentDescription="Interactive map view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView5"
-            app:layout_constraintVertical_bias="0.826" />
+            app:layout_constraintVertical_bias="0.632" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
