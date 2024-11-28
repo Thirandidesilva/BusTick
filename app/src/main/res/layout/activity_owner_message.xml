@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity">
+    tools:context=".OwnerMessageActivity">
 
     <!-- Main Content Area -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,34 +21,22 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/history_card_layout"
-            android:layout_width="342dp"
-            android:layout_height="179dp"
+            android:layout_width="346dp"
+            android:layout_height="180dp"
             android:layout_margin="16dp"
             android:background="@drawable/messagebackground"
             android:elevation="4dp"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.543">
+            app:layout_constraintVertical_bias="0.205">
 
             <!-- Title (Narammala) -->
 
             <!-- Bus Number -->
-
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Booking Completed"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Driver Name -->
 
@@ -57,10 +45,23 @@
             <!-- Time -->
 
             <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bus registration Completed"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/bus_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
                 android:text="NB-6323"
                 android:textColor="@color/black"
@@ -72,7 +73,7 @@
                 android:id="@+id/driver_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:text="Narammala"
                 android:textColor="@color/black"
@@ -141,105 +142,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/history_ard_layout"
-            android:layout_width="339dp"
-            android:layout_height="188dp"
-            android:layout_margin="16dp"
-            android:layout_marginTop="118dp"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/historymessagebackground"
-            android:elevation="4dp"
-            android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/history_card_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_text3"
-            app:layout_constraintVertical_bias="0.589">
-
-            <!-- Title (Narammala) -->
-
-            <!-- Bus Number -->
-            <TextView
-                android:id="@+id/history_title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User 12345"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Driver Name -->
-
-            <!-- Arrow Icon -->
-
-            <!-- Time -->
-
-            <TextView
-                android:id="@+id/history_bus_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:text="Exchange Seat Request"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_title_text" />
-
-            <TextView
-                android:id="@+id/history_driver_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="NB-6323 | Narammala"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.06"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_bus_number" />
-
-            <ImageView
-                android:id="@+id/history_arrow_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_arrow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <FrameLayout
-                android:id="@+id/history_frameLayout"
-                android:layout_width="312dp"
-                android:layout_height="45dp"
-                android:background="@drawable/button_background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:id="@+id/history_time_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:text="07:55 AM"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </FrameLayout>
-
-
-            <!-- Location Icon -->
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
