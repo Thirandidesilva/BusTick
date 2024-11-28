@@ -9,9 +9,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BookingActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -67,10 +70,15 @@ public class BookingActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        // Customize the map settings or add markers here
+        // Set map type and enable UI features
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+        // Add a marker at a specific location
+        LatLng defaultLocation = new LatLng(-33.852, 151.211); // Sydney, Australia
+        googleMap.addMarker(new MarkerOptions().position(defaultLocation).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f));
     }
 
     @Override
