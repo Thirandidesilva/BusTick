@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    tools:context=".ViewBookingActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Driver Details Section -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="#F5F5F5"
+                android:clipToPadding="false"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/driver_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+
+                    android:src="@drawable/ic_profile" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/driver_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="S S P Kumarasiri"
+                        android:textColor="#1D1B1B"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/driver_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07:55 AM (NB-6323)"
+                        android:textColor="#757575"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/details_arrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow" />
+            </LinearLayout>
+
+            <!-- Ratings Section -->
+            <TextView
+                android:id="@+id/ratings_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ratings:"
+                android:textColor="#1D1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Seat Details Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#EFEFEF"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Total Seats\n24"
+                    android:textColor="#1D1B1B"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#EFEFEF"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Available Seats\n12"
+                    android:textColor="#1D1B1B"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Seat Selection -->
+
+            <!-- Seats Grid -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Left Side: Total Seats -->
+                <GridLayout
+                    android:id="@+id/total_seats_grid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:padding="8dp"
+                    android:rowOrderPreserved="true">
+
+                    <!-- Total Seats List (1-12) -->
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#FFF176"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#FFF176"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="8"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="9"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="11"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#E57373"
+                        android:gravity="center"
+                        android:text="12"
+                        android:textColor="#1D1B1B" />
+                </GridLayout>
+
+                <!-- Right Side: Driving Seat -->
+                <GridLayout
+                    android:id="@+id/driving_seats_grid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:padding="8dp"
+                    android:rowOrderPreserved="true">
+
+                    <!-- Driving Seat List (13-24) -->
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="13"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="14"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="15"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="16"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="17"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="18"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="19"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="21"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="22"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="23"
+                        android:textColor="#1D1B1B" />
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_margin="4dp"
+                        android:background="#A8E6A3"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#1D1B1B" />
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- Selected Seats Section -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Selected Seats\n5, 6"
+                android:textColor="#1D1B1B"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Fee: Rs.570.00"
+                android:textColor="#1D1B1B"
+                android:textSize="16sp" />
+
+            <!-- Fee Section -->
+
+            <!-- Book/Cancel Buttons -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ask passengers to exchange seats."
+                android:textColor="#1D1B1B"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/buttonBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="#F7D786"
+                android:text="Booking Completed"
+                android:textColor="#1D1B1B" />
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F28B82"
+                android:text="Send Cancel request" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="121dp"
+                app:srcCompat="@color/white" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="374dp"
+        android:layout_height="58dp"
+        android:layout_marginHorizontal="34dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bottom_nav_background"
+        android:baselineAligned="false"
+        android:elevation="8dp"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

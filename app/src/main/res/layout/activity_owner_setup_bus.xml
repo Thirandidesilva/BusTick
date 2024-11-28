@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SetupBusActivity">
+    tools:context=".OwnerSetupBusActivity">
 
 
     <TextView
@@ -155,17 +155,17 @@
             android:id="@+id/editTextText6"
             android:layout_width="320dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="96dp"
+            android:layout_marginBottom="104dp"
             android:background="@drawable/textview_background"
             android:ems="10"
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="Driver ID"
+            android:text="Driver username"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintHorizontal_bias="0.566"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view2"
             app:layout_constraintVertical_bias="0.12" />
@@ -234,13 +234,13 @@
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="384dp"
+            android:layout_marginTop="376dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Assign Driver"
             android:textColor="#181818"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintHorizontal_bias="0.064"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
