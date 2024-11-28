@@ -38,11 +38,31 @@ public class LoginSelectionActivity extends AppCompatActivity {
         });
 
         // Find the TextView and set a click listener
+        TextView btn_pa = findViewById(R.id.btn_pa);
+        btn_pa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginSelectionActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Find the TextView and set a click listener
         TextView btn_bd = findViewById(R.id.btn_bd);
         btn_bd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSelectionActivity.this, DriverBusRouteViewActivity.class);
+                Intent intent = new Intent(LoginSelectionActivity.this, DriverLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Find the TextView and set a click listener
+        TextView btn_bow = findViewById(R.id.btn_bow);
+        btn_bow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginSelectionActivity.this, OwnerLoginActivity.class);
                 startActivity(intent);
             }
         });

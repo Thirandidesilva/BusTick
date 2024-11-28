@@ -2,6 +2,8 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +49,15 @@ public class MessageActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+        ImageView history_arrow_icon = findViewById(R.id.history_arrow_icon);
+        history_arrow_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MessageActivity.this, SeatExchangeResponseActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

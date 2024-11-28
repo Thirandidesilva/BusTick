@@ -2,6 +2,9 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,5 +52,17 @@ public class DriverMessageActivity extends AppCompatActivity {
 
             return false;
         });
+
+
+
+        ImageView arrow_icon = findViewById(R.id.arrow_icon);
+        arrow_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DriverMessageActivity.this, DriverViewBusDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

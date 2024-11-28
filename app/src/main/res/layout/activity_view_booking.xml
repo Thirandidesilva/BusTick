@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:background="@drawable/historymessagebackground"
+                android:background="#F5F5F5"
                 android:clipToPadding="false"
                 android:elevation="4dp"
                 android:orientation="horizontal"
@@ -96,7 +96,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/historymessagebackground"
+                    android:background="#EFEFEF"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
@@ -108,7 +108,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/messagebackground"
+                    android:background="#EFEFEF"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
@@ -130,7 +130,7 @@
                 <!-- Left Side: Total Seats -->
                 <GridLayout
                     android:id="@+id/total_seats_grid"
-                    android:layout_width="148dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:alignmentMode="alignMargins"
@@ -151,8 +151,6 @@
                     <TextView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_row="0"
-                        android:layout_column="12"
                         android:layout_margin="4dp"
                         android:background="#A8E6A3"
                         android:gravity="center"
@@ -394,11 +392,12 @@
 
             <!-- Book/Cancel Buttons -->
             <TextView
+                android:id="@+id/exchagetxt"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="34dp"
                 android:layout_marginBottom="8dp"
                 android:text="Ask passengers to exchange seats."
-                android:textColor="#3F51B5"
+                android:textColor="#293575"
                 android:textSize="16sp" />
 
             <Button
