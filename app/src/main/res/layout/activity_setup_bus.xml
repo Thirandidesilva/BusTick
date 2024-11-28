@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetupBusActivity">
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Setup"
+        android:textColor="#181818"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Bus Route"
+        android:textColor="#181818"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Your"
+        android:textColor="#D7B26A"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="350dp"
+        android:layout_height="567dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/historymessagebackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="284dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Bus Number"
+            android:textColor="#181818"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="456dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="Start Location"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="396dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="End Location"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <EditText
+            android:id="@+id/editTextText4"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="296dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="Bus route"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <EditText
+            android:id="@+id/editTextText5"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="196dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="NA - XXXX"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <EditText
+            android:id="@+id/editTextText6"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="96dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="Driver ID"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Let's Setup your bus route"
+            android:textColor="#181818"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="184dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Add bus route"
+            android:textColor="#181818"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="476dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="How many seats"
+            android:textColor="#181818"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextText7"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="(24-48-52-etc)"
+            android:textColor="#757575"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintVertical_bias="0.12" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="384dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Assign Driver"
+            android:textColor="#181818"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/view_details_btn"
+        android:layout_width="357dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#E7B1AB"
+        android:drawablePadding="8dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="20dp"
+        android:text="Cancel setup"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/view_details_btn2"
+        android:layout_width="357dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#F7D786"
+        android:drawablePadding="8dp"
+        android:gravity="start|center_vertical"
+        android:paddingStart="20dp"
+        android:text="Complete setup bus"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="34dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bottom_nav_background"
+        android:elevation="8dp"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
