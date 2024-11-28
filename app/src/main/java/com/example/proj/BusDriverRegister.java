@@ -45,8 +45,6 @@ public class BusDriverRegister extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     @Override

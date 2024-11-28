@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".ViewBookingActivity">
+    tools:context=".DriverViewBusDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,11 +25,12 @@
 
             <!-- Driver Details Section -->
 
+            <!-- Ratings Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:background="#F5F5F5"
+                android:background="@drawable/historymessagebackground"
                 android:clipToPadding="false"
                 android:elevation="4dp"
                 android:orientation="horizontal"
@@ -74,7 +75,6 @@
                     android:src="@drawable/ic_arrow" />
             </LinearLayout>
 
-            <!-- Ratings Section -->
             <TextView
                 android:id="@+id/ratings_label"
                 android:layout_width="wrap_content"
@@ -82,8 +82,49 @@
                 android:layout_marginBottom="8dp"
                 android:text="Ratings:"
                 android:textColor="#1D1B1B"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_star_24" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_star_24" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_star_24" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_star_half_24" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_star_outline_24" />
+
+                <TextView
+                    android:id="@+id/rating_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="4.3/5"
+                    android:textColor="#1D1B1B"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <!-- Seat Details Section -->
             <LinearLayout
@@ -96,7 +137,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#EFEFEF"
+                    android:background="@drawable/historymessagebackground"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
@@ -108,7 +149,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#EFEFEF"
+                    android:background="@drawable/messagebackground"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
@@ -372,54 +413,9 @@
 
             <!-- Selected Seats Section -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Selected Seats\n5, 6"
-                android:textColor="#1D1B1B"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Fee: Rs.570.00"
-                android:textColor="#1D1B1B"
-                android:textSize="16sp" />
-
             <!-- Fee Section -->
 
             <!-- Book/Cancel Buttons -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Ask passengers to exchange seats."
-                android:textColor="#1D1B1B"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/buttonBook"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="#3FF7D786"
-                android:text="Booking Completed"
-                android:textColor="#1D1B1B" />
-
-            <Button
-                android:id="@+id/buttonCancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F28B82"
-                android:text="Send Cancel request" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="match_parent"
-                android:layout_height="121dp"
-                app:srcCompat="@color/white" />
 
 
         </LinearLayout>
