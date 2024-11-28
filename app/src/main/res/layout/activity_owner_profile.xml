@@ -6,10 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".OwnerProfileActivity">
 
 
-    <!-- Content area for BookingActivity -->
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -21,8 +22,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
-        <!-- Add specific UI elements for BookingActivity here -->
 
+
+        <EditText
+
+            android:id="@+id/txt_mobile"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="Mobile"
+            android:textColor="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_mobile" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton4"
@@ -39,11 +57,24 @@
             app:layout_constraintStart_toStartOf="@+id/image_profile"
             app:srcCompat="@drawable/baseline_photo_camera_24" />
 
+        <TextView
+            android:id="@+id/label_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="324dp"
+            android:text="User name"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.178"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/txt_username"
             android:layout_width="320dp"
             android:layout_height="48dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/textview_background"
             android:ems="10"
             android:inputType="text"
@@ -56,83 +87,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_user_name" />
 
-        <TextView
-            android:id="@+id/label_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:text="User name"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.178"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/label_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="E-mail"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_username" />
-
-        <TextView
-            android:id="@+id/label_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Mobile"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.162"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_email" />
-
-        <EditText
-
-            android:id="@+id/txt_mobile"
-            android:layout_width="320dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/textview_background"
-            android:ems="10"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:paddingLeft="16dp"
-            android:text="Mobile"
-            android:textColor="#757575"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_mobile" />
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="235dp"
-            android:layout_height="55dp"
-            android:background="@drawable/button_background"
-            android:backgroundTint="#F7D786"
-            android:text="Save Changes"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
-            app:layout_constraintVertical_bias="0.203" />
-
         <EditText
             android:id="@+id/txt_email"
             android:layout_width="320dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/textview_background"
             android:ems="10"
             android:inputType="text"
@@ -145,10 +104,52 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_email" />
 
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="E-mail"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+
+        <TextView
+            android:id="@+id/label_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Mobile"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.162"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="202dp"
+            android:layout_height="55dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#F7D786"
+            android:text="Save Changes"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
+            app:layout_constraintVertical_bias="0.351" />
+
         <Button
             android:id="@+id/btn_logout"
-            android:layout_width="230dp"
-            android:layout_height="54dp"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
             android:background="@drawable/button_background"
             android:backgroundTint="#FFFFFF"
             android:text="Sign out"

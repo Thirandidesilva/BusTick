@@ -1,10 +1,7 @@
 package com.example.proj;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,14 +11,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class SeatBookActivity extends AppCompatActivity {
+public class ViewBookingActivity extends AppCompatActivity {
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_seat_book);
+        setContentView(R.layout.activity_view_booking);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -32,7 +28,7 @@ public class SeatBookActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the selected item (optional, useful for showing the selected item after navigating back)
-        bottomNavigationView.setSelectedItemId(R.id.reserved);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
         // Handle navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -55,21 +51,8 @@ public class SeatBookActivity extends AppCompatActivity {
             return false;
         });
 
-        Button buttonBook = findViewById(R.id.buttonBook);
-        buttonBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CompletedActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button buttonCancel = findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CancelledActivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
+
+
 }

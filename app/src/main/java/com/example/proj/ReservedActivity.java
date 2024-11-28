@@ -2,6 +2,9 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,15 @@ public class ReservedActivity extends AppCompatActivity {
 
         // Set the selected item (optional, useful for showing the selected item after navigating back)
         bottomNavigationView.setSelectedItemId(R.id.reserved);
+
+        ImageView button = findViewById(R.id.arrow_icon);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReservedActivity.this, ViewBookingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Handle navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
