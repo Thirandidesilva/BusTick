@@ -6,14 +6,14 @@
     android:background="#1D1B1B"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserSelectionActivity">
+    tools:context=".LoginSelectionActivity">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:text="Create account as ,"
+        android:text=" Login as ,"
         android:textColor="#FFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,30 +24,30 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="215dp"
+        android:layout_height="27dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Already have an account ,"
         android:textColor="#FFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintVertical_bias="0.843" />
 
     <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView26"
+        android:layout_width="83dp"
+        android:layout_height="29dp"
         android:fontFamily="@font/poppins_medium"
         android:text="Sign In"
         android:textColor="#F7D786"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.845" />
@@ -98,11 +98,12 @@
         app:layout_constraintVertical_bias="0.111" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/userselectionpage" />
+        app:srcCompat="@drawable/loginselect" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

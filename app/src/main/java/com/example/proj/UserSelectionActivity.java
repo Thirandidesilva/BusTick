@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class UserSelection extends AppCompatActivity {
+public class UserSelectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class UserSelection extends AppCompatActivity {
         pbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserSelection.this,PassengerRegister.class);
+                Intent intent = new Intent(UserSelectionActivity.this,PassengerRegister.class);
                 startActivity(intent);
             }
         });
@@ -37,7 +38,7 @@ public class UserSelection extends AppCompatActivity {
         bdbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserSelection.this,BusDriverRegister.class);
+                Intent intent = new Intent(UserSelectionActivity.this,BusDriverRegister.class);
                 startActivity(intent);
             }
         });
@@ -46,9 +47,18 @@ public class UserSelection extends AppCompatActivity {
         bobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserSelection.this,BusOwnerRegister.class);
+                Intent intent = new Intent(UserSelectionActivity.this,BusOwnerRegister.class);
                 startActivity(intent);
 
+            }
+        });
+
+        TextView textView29 = findViewById(R.id.textView29);
+        textView29.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserSelectionActivity.this, LoginSelectionActivity.class);
+                startActivity(intent);
             }
         });
     }
