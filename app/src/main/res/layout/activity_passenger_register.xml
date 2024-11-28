@@ -48,7 +48,7 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
-        android:text="Name"
+        android:hint="Name"
         android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
