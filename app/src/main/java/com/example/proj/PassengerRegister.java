@@ -51,7 +51,7 @@ public class PassengerRegister extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PassengerRegister.this, HomeActivity.class);
+                Intent intent = new Intent(PassengerRegister.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
