@@ -2,6 +2,8 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +51,19 @@ public class ViewBookingActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+
+
+        // Add a click listener to the TextView with ID 'pick_location'
+        TextView exchagetxt = findViewById(R.id.exchagetxt);
+        exchagetxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start BookingActivity
+                Intent intent = new Intent(ViewBookingActivity.this, SeatExchangeRequestActivity.class);
+                startActivity(intent);
+            }
         });
 
     }

@@ -9,8 +9,7 @@
     tools:context=".OwnerProfileActivity">
 
 
-
-
+    <!-- Content area for BookingActivity -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -22,7 +21,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
+        <!-- Add specific UI elements for BookingActivity here -->
 
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:focusable="true"
+            android:tint="@color/cardview_light_background"
+            app:backgroundTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@+id/image_profile"
+            app:layout_constraintEnd_toEndOf="@+id/image_profile"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/image_profile"
+            app:srcCompat="@drawable/baseline_photo_camera_24" />
+
+        <EditText
+            android:id="@+id/txt_username"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/textview_background"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingLeft="16dp"
+            android:text="Username"
+            android:textColor="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_user_name" />
+
+        <TextView
+            android:id="@+id/label_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="272dp"
+            android:text="User name"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.178"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="E-mail"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_username" />
+
+        <TextView
+            android:id="@+id/label_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Mobile"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.162"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_email" />
 
         <EditText
 
@@ -42,50 +113,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_mobile" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:contentDescription="TODO"
-            android:focusable="true"
-            android:tint="@color/cardview_light_background"
-            app:backgroundTint="@color/yellow"
-            app:layout_constraintBottom_toBottomOf="@+id/image_profile"
-            app:layout_constraintEnd_toEndOf="@+id/image_profile"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/image_profile"
-            app:srcCompat="@drawable/baseline_photo_camera_24" />
-
-        <TextView
-            android:id="@+id/label_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="324dp"
-            android:text="User name"
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="235dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#F7D786"
+            android:text="Save Changes"
             android:textColor="#1D1B1B"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.178"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_mobile" />
 
-        <EditText
-            android:id="@+id/txt_username"
-            android:layout_width="320dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/textview_background"
-            android:ems="10"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:paddingLeft="16dp"
-            android:text="Username"
-            android:textColor="#757575"
+        <Button
+            android:id="@+id/btn_save2"
+            android:layout_width="235dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="108dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#E9E2E2"
+            android:text="Sign Out"
+            android:textColor="#1D1B1B"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_user_name" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_mobile" />
 
         <EditText
             android:id="@+id/txt_email"
@@ -103,64 +157,6 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_email" />
-
-        <TextView
-            android:id="@+id/label_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="E-mail"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_username" />
-
-        <TextView
-            android:id="@+id/label_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Mobile"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.162"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_email" />
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="202dp"
-            android:layout_height="55dp"
-            android:background="@drawable/button_background"
-            android:backgroundTint="#F7D786"
-            android:text="Save Changes"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
-            app:layout_constraintVertical_bias="0.351" />
-
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="200dp"
-            android:layout_height="55dp"
-            android:background="@drawable/button_background"
-            android:backgroundTint="#FFFFFF"
-            android:text="Sign out"
-            android:textColor="#1D1B1B"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_save"
-            app:layout_constraintVertical_bias="0.409" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_profile"

@@ -38,7 +38,7 @@ public class OwnerSetupBusActivity extends AppCompatActivity {
                 startActivity(new Intent(this, OwnerHomeActivity.class));
                 return true;
             } else if (id == R.id.reserved) {
-                startActivity(new Intent(this, OwnerSetupBusActivity.class));
+                startActivity(new Intent(this, OwnerViewBusDetailsActivity.class));
                 return true;
             } else if (id == R.id.message) {
                 startActivity(new Intent(this, OwnerMessageActivity.class));

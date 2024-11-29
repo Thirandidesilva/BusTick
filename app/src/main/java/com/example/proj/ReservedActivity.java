@@ -31,8 +31,8 @@ public class ReservedActivity extends AppCompatActivity {
         // Set the selected item (optional, useful for showing the selected item after navigating back)
         bottomNavigationView.setSelectedItemId(R.id.reserved);
 
-        ImageView button = findViewById(R.id.arrow_icon);
-        button.setOnClickListener(new View.OnClickListener() {
+        ImageView arrow_icon = findViewById(R.id.arrow_icon);
+        arrow_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReservedActivity.this, ViewBookingActivity.class);
