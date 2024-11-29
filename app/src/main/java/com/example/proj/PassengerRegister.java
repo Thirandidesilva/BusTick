@@ -3,9 +3,12 @@ package com.example.proj;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
@@ -20,6 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PassengerRegister extends AppCompatActivity {
     private ImageView imageView;
     private FloatingActionButton button;
+    private EditText etUsername, etEmail, etMobile, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,10 @@ public class PassengerRegister extends AppCompatActivity {
 
          imageView = findViewById(R.id.image_view1);
          button = findViewById(R.id.floatingActionButton);
+         etUsername = findViewById(R.id.editTextText2);
+         etEmail = findViewById(R.id.editTextTextEmailAddress);
+         etMobile = findViewById(R.id.editTextPhone2);
+         etPassword = findViewById(R.id.editTextTextPassword);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +59,48 @@ public class PassengerRegister extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Validate input fields
+                String username = etUsername.getText().toString().trim();
+                String email = etEmail.getText().toString().trim();
+                String mobile = etMobile.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username)) {
+                    etUsername.setError("Username cannot be empty");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(email)) {
+                    etEmail.setError("Email cannot be empty");
+                    return;
+                }
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmail.setError("Invalid email format");
+                    return;
+                }
+                if (TextUtils.isEmpty(mobile)) {
+                    etMobile.setError("Mobile number cannot be empty");
+                    return;
+                }
+                if (mobile.length() != 10 || !mobile.matches("\\d+")) {
+                    etMobile.setError("Enter a valid 10-digit mobile number");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    etPassword.setError("Password cannot be empty");
+                    return;
+                }
+                if (password.length() < 6) {
+                    etPassword.setError("Password must be at least 6 characters");
+                    return;
+                }
+
+                // If all validations pass, show a success message
+                Toast.makeText(PassengerRegister.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+
+                // direct to login class if registration is correct
+
                 Intent intent = new Intent(PassengerRegister.this, LoginActivity.class);
                 startActivity(intent);
             }
