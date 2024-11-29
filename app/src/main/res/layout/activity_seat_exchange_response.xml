@@ -12,12 +12,12 @@
         android:id="@+id/textView22"
         android:layout_width="315dp"
         android:layout_height="84dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="56dp"
         android:text="Passenger Asked for exchange seats with you"
         android:textColor="#1B1B1B"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/textView23"
         android:layout_width="311dp"
         android:layout_height="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="He wants to exchange the seat  with your seat no,"
         android:textColor="#1B1B1B"
         android:textSize="20sp"
@@ -38,11 +38,11 @@
         android:id="@+id/textView24"
         android:layout_width="333dp"
         android:layout_height="32dp"
-        android:layout_marginTop="4dp"
         android:text="Seat No 7 , Colombo to Galle"
         android:textColor="#7A7A7A"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -50,12 +50,11 @@
         android:id="@+id/textView25"
         android:layout_width="333dp"
         android:layout_height="32dp"
-        android:layout_marginTop="8dp"
         android:text="Example Name"
         android:textColor="#7A7A7A"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
@@ -63,12 +62,12 @@
         android:id="@+id/textView34"
         android:layout_width="304dp"
         android:layout_height="36dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Seat Request From , "
         android:textColor="#1B1B1B"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -76,36 +75,33 @@
         android:id="@+id/textView28"
         android:layout_width="307dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginTop="8dp"
         android:text="Why he/she want to Exchange seats."
         android:textColor="#1B1B1B"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="4dp"
-        android:layout_marginBottom="40dp"
         android:background="#F7D786"
         android:gravity="center"
         android:text="8"
         android:textColor="#1D1B1B"
-        app:layout_constraintBottom_toTopOf="@+id/textView28"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
-        android:layout_width="345dp"
-        android:layout_height="176dp"
+        android:layout_width="332dp"
+        android:layout_height="178dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
@@ -113,16 +109,16 @@
         android:text="Text from sender."
         app:layout_constraintBottom_toTopOf="@+id/buttonBook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView28"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonCancel"
         android:layout_width="344dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="16dp"
         android:background="#F28B82"
         android:text="Ignore"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
