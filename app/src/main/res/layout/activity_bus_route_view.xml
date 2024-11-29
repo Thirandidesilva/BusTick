@@ -33,31 +33,21 @@
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/map_view"
-            android:layout_width="414dp"
-            android:layout_height="511dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="410dp"
+            android:layout_height="485dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/white"
             android:contentDescription="Interactive map view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/busselectedbackground" />
 
         <Button
             android:id="@+id/view_details_btn"
             android:layout_width="357dp"
             android:layout_height="51dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"
             android:background="@drawable/button_background"
             android:backgroundTint="#F7D786"
             android:drawablePadding="8dp"
@@ -66,9 +56,60 @@
             android:text="View Bus Details"
             android:textAllCaps="false"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/map_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="364dp"
+            android:layout_height="156dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/historymessagebackground"
+            app:layout_constraintBottom_toTopOf="@+id/view_details_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Select Bus from the time slots"
+                android:textColor="#181818"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.34"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="317dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="12dp"
+                android:text="Start location     -     End location"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="317dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="56dp"
+                android:text="9.55 AM - 11.55 AM"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

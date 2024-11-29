@@ -453,7 +453,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F28B82"
-            android:text="Cancel Booking" />
+            android:text="Cancel" />
 
         <ImageView
             android:id="@+id/imageView7"

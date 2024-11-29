@@ -11,8 +11,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 public class DriverLoginActivity extends AppCompatActivity {
 
     @Override
@@ -30,7 +28,7 @@ public class DriverLoginActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DriverLoginActivity.this, DriverBusRouteViewActivity.class);
+                Intent intent = new Intent(DriverLoginActivity.this, DriverHomeActivity.class);
                 startActivity(intent);
             }
         });

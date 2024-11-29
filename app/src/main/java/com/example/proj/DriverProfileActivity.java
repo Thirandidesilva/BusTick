@@ -34,7 +34,7 @@ public class DriverProfileActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.home) {
-                startActivity(new Intent(this, DriverBusRouteViewActivity.class));
+                startActivity(new Intent(this, DriverHomeActivity.class));
                 return true;
             } else if (id == R.id.reserved) {
                 startActivity(new Intent(this, DriverViewBusDetailsActivity.class));

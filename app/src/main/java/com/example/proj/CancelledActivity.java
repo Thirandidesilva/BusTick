@@ -11,8 +11,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.concurrent.CompletionException;
-
 public class CancelledActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +24,7 @@ public class CancelledActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = findViewById(R.id.back_to_home);
+        Button button = findViewById(R.id.reserved_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
