@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -106,6 +107,14 @@ public class BusOwnerRegister extends AppCompatActivity {
 
 
                 Intent intent = new Intent(BusOwnerRegister.this,OwnerLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        TextView textView7 = findViewById(R.id.textView7);
+        textView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BusOwnerRegister.this, LoginSelectionActivity.class);
                 startActivity(intent);
             }
         });
