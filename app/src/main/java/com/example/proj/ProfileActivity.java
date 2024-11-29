@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -71,6 +72,15 @@ public class ProfileActivity extends AppCompatActivity {
                         .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
 
+            }
+        });
+
+        Button btn_signout = findViewById(R.id.btn_signout);
+        btn_signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, LoginSelectionActivity.class);
+                startActivity(intent);
             }
         });
     }
