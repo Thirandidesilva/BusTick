@@ -79,8 +79,8 @@
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/map_view"
-            android:layout_width="415dp"
-            android:layout_height="438dp"
+            android:layout_width="413dp"
+            android:layout_height="362dp"
             android:layout_marginBottom="32dp"
             android:background="@color/white"
             android:contentDescription="Interactive map view"
@@ -93,7 +93,7 @@
             android:id="@+id/view_details_btn"
             android:layout_width="357dp"
             android:layout_height="51dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:backgroundTint="#F7D786"
             android:drawablePadding="8dp"
@@ -110,7 +110,7 @@
             android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="12dp"
             android:fontFamily="@font/poppins"
             android:text="Good Morning"
             android:textSize="16sp"
@@ -123,29 +123,33 @@
             android:id="@+id/textView32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="56dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Username"
             android:textColor="#D7B26A"
             android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView30"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.681" />
 
         <TextView
             android:id="@+id/textView27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="56dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Hello, "
             android:textColor="#040404"
             android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView30"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.083"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.681" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

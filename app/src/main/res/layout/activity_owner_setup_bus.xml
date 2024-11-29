@@ -15,7 +15,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="76dp"
         android:background="#F7D786"
-        android:text="Edit Bus Details"
+        android:text="Save Bus Details"
         android:textColor="#1D1B1B"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
