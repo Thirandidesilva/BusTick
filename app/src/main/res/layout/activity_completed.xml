@@ -8,17 +8,16 @@
     tools:context=".CompletedActivity">
 
     <Button
-        android:id="@+id/back_to_home"
+        android:id="@+id/reserved_btn"
         android:layout_width="357dp"
         android:layout_height="51dp"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="152dp"
         android:background="@drawable/button_background"
         android:backgroundTint="#F7D786"
         android:drawablePadding="8dp"
         android:gravity="center|center_vertical"
         android:paddingStart="20dp"
-        android:text="Back to Home"
+        android:text="Go to my Bookings"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

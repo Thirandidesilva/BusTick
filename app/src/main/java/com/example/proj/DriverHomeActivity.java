@@ -13,13 +13,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class DriverBusRouteViewActivity extends AppCompatActivity {
+public class DriverHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_driver_bus_route_view);
+        setContentView(R.layout.activity_driver_home);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -36,7 +36,7 @@ public class DriverBusRouteViewActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.home) {
-                startActivity(new Intent(this, DriverBusRouteViewActivity.class));
+                startActivity(new Intent(this, DriverHomeActivity.class));
                 return true;
             } else if (id == R.id.reserved) {
                 startActivity(new Intent(this, DriverViewBusDetailsActivity.class));
@@ -57,7 +57,7 @@ public class DriverBusRouteViewActivity extends AppCompatActivity {
         view_details_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DriverBusRouteViewActivity.this, DriverViewBusDetailsActivity
+                Intent intent = new Intent(DriverHomeActivity.this, DriverViewBusDetailsActivity
                         .class);
                 startActivity(intent);
             }

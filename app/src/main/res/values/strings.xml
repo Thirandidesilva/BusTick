@@ -2,4 +2,20 @@
     <string name="app_name">Proj</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="example_options">
+        <item>Ambalangoda</item>
+        <item>Colombo</item>
+        <item>Elpitiya</item>
+        <item>Galle</item>
+        <item>Kadawatha</item>
+        <item>Kaduwela</item>
+        <item>Kandy</item>
+        <item>Makubura</item>
+        <item>Matara</item>
+        <item>Moratuwa Campus</item>
+        <item>Negombo</item>
+        <item>Panadura</item>
+    </string-array>
 </resources>
+
+
