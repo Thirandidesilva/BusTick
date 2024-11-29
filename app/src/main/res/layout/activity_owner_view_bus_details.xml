@@ -417,7 +417,7 @@
 
             <!-- Book/Cancel Buttons -->
             <Button
-                android:id="@+id/buttonBook"
+                android:id="@+id/buttonEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -430,7 +430,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#F28B82"
-                android:text="Remove From App" />
+                android:text="Remove From The App" />
 
 
         </LinearLayout>

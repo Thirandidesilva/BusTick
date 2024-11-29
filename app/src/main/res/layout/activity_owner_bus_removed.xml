@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompletedActivity">
+    tools:context=".OwnerBusRemovedActivity">
 
     <Button
-        android:id="@+id/reserved_btn"
+        android:id="@+id/homeBtn"
         android:layout_width="357dp"
         android:layout_height="51dp"
         android:layout_marginBottom="152dp"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="364dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Request"
+        android:text="From"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.691"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="364dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Cancel"
+        android:text="Removed"
         android:textColor="#F65151"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="412dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Sent"
+        android:text="Application"
         android:textColor="#F65151"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"

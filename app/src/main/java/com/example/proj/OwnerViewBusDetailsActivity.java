@@ -2,6 +2,8 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +51,25 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+
+
+        Button buttonEdit = findViewById(R.id.buttonEdit);
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OwnerViewBusDetailsActivity.this, OwnerSetupBusActivity.class);
+                startActivity(intent);
+            }
+        });
+        Button buttonCancel = findViewById(R.id.buttonCancel);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OwnerViewBusDetailsActivity.this, OwnerBusRemovedActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }
