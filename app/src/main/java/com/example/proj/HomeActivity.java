@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -55,5 +56,33 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        TextView greetingTextView = findViewById(R.id.textView2);
+        setGreeting(greetingTextView);
+
     }
+
+    // Method to determine and set the greeting text
+    private void setGreeting(TextView greetingTextView) {
+        // Get the current hour of the day
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        // Determine the appropriate greeting
+        String greeting;
+        if (hour >= 5 && hour < 12) {
+            greeting = "Good Morning";
+        } else if (hour >= 12 && hour < 17) {
+            greeting = "Good Afternoon";
+        } else if (hour >= 17 && hour < 21) {
+            greeting = "Good Evening";
+        } else {
+            greeting = "Good Night";
+        }
+
+        // Set the greeting text in the TextView
+        greetingTextView.setText(greeting);
+    }
+
+
+
 }
