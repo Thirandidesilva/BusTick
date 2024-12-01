@@ -56,7 +56,7 @@ public class OwnerProfileActivity extends AppCompatActivity {
         btn_signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OwnerProfileActivity.this, LoginSelectionActivity.class);
+                Intent intent = new Intent(OwnerProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

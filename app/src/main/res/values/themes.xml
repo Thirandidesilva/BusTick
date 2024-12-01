@@ -3,6 +3,8 @@
     <style name="Base.Theme.Proj" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.Proj" parent="Base.Theme.Proj" />

@@ -5,28 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".BusOwnerRegister">
+    android:background="#FFFFFF"
+    tools:context=".RegisterActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_view2"
+        android:id="@+id/image_view1"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@color/gray"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
+        app:layout_constraintVertical_bias="0.02"
         app:shapeAppearanceOverlay="@style/circular"
         app:srcCompat="@drawable/baseline_person_24"
         app:strokeColor="@color/cardview_light_background"
         app:strokeWidth="3dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -34,28 +34,43 @@
         android:contentDescription="TODO"
         android:focusable="true"
         android:tint="@color/cardview_light_background"
-        app:backgroundTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="@+id/image_view2"
-        app:layout_constraintEnd_toEndOf="@+id/image_view2"
+        app:backgroundTint="#e0c62f"
+        app:layout_constraintBottom_toBottomOf="@+id/image_view1"
+        app:layout_constraintEnd_toEndOf="@+id/image_view1"
         app:srcCompat="@drawable/baseline_photo_camera_24" />
+
+    <EditText
+        android:id="@+id/editTextPhone2"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/textview_background"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:paddingLeft="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
         android:id="@+id/editTextText2"
         android:layout_width="320dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="260dp"
         android:background="@drawable/textview_background"
         android:ems="10"
+        android:hint="Name"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
-        android:hint="Name"
         android:textColor="#757575"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view2"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
@@ -72,24 +87,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText2"
-        app:layout_constraintVertical_bias="0.056" />
-
-    <EditText
-        android:id="@+id/editTextPhone2"
-        android:layout_width="320dp"
-        android:layout_height="48dp"
-        android:background="@drawable/textview_background"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:minHeight="48dp"
-        android:paddingLeft="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -101,12 +99,12 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingLeft="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone2"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <Button
         android:id="@+id/button2"
@@ -120,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.426" />
+        app:layout_constraintVertical_bias="0.32" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -128,6 +126,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/blackbackground" />
 
@@ -156,6 +155,16 @@
         app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/spinner_background"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view1"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
