@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,8 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView imageView;
     private FloatingActionButton button;
     private EditText etUsername, etEmail, etMobile, etPassword;
-
-
+    private DatabaseHelper databaseHelper;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,35 +41,45 @@ public class RegisterActivity extends AppCompatActivity {
             return insets;
         });
 
-         imageView = findViewById(R.id.image_view1);
-         button = findViewById(R.id.floatingActionButton);
-         etUsername = findViewById(R.id.editTextText2);
-         etEmail = findViewById(R.id.editTextTextEmailAddress);
-         etMobile = findViewById(R.id.editTextPhone2);
-         etPassword = findViewById(R.id.editTextTextPassword);
+        // Initialize UI elements
+        imageView = findViewById(R.id.image_view1);
+        button = findViewById(R.id.floatingActionButton);
+        etUsername = findViewById(R.id.editTextText2);
+        etEmail = findViewById(R.id.editTextTextEmailAddress);
+        etMobile = findViewById(R.id.editTextPhone2);
+        etPassword = findViewById(R.id.editTextTextPassword);
+        spinner = findViewById(R.id.spinner);
+
+        // Initialize DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
+
+        // Spinner Setup
+        String[] roles = {"Passenger", "Bus Owner", "Driver"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roles);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 ImagePicker.with(RegisterActivity.this)
-                        .crop()	    			//Crop image(Optional), Check Customization for more option
-                        .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .crop() // Crop image(Optional), Check Customization for more option
+                        .compress(1024) // Final image size will be less than 1 MB(Optional)
+                        .maxResultSize(1080, 1080) // Final image resolution will be less than 1080 x 1080(Optional)
                         .start();
-
             }
         });
+
         Button button = findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // Validate input fields
                 String username = etUsername.getText().toString().trim();
                 String email = etEmail.getText().toString().trim();
                 String mobile = etMobile.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
+                String role = spinner.getSelectedItem().toString();
 
                 if (TextUtils.isEmpty(username)) {
                     etUsername.setError("Username cannot be empty");
@@ -102,15 +111,22 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                // If all validations pass, show a success message
-                Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                // Register user in the database
+                long isInserted = databaseHelper.insertUser(username, email, mobile, password, role);
+                if (isInserted != 1) {
+                    // Show success message
+                    Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
 
-                // direct to login class if registration is correct
-
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
+                    // Navigate to LoginActivity
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Registration Failed. User may already exist.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         TextView textView7 = findViewById(R.id.textView7);
         textView7.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,19 +135,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Spinner spinner = findViewById(R.id.spinner);
-        String[] items = {"Passenger", "Bus Owner", "Driver"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Uri uri = data.getData();
-        imageView.setImageURI(uri);
+        if (data != null) {
+            Uri uri = data.getData();
+            imageView.setImageURI(uri);
+        }
     }
 }
