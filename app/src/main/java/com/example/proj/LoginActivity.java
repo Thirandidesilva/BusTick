@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Validate input
         if (TextUtils.isEmpty(username)) {
-            etEmail.setError("Username cannot be empty");
+            etEmail.setError("Email cannot be empty");
             return;
         }
 
