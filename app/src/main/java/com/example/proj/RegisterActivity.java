@@ -44,10 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
         // Initialize UI elements
         imageView = findViewById(R.id.image_view1);
         button = findViewById(R.id.floatingActionButton);
-        etUsername = findViewById(R.id.editTextText2);
-        etEmail = findViewById(R.id.editTextTextEmailAddress);
-        etMobile = findViewById(R.id.editTextPhone2);
-        etPassword = findViewById(R.id.editTextTextPassword);
+        etUsername = findViewById(R.id.editTextName);
+        etEmail = findViewById(R.id.editTextEmail);
+        etPassword = findViewById(R.id.editTextPassword);
+        etMobile = findViewById(R.id.editTextPhone);
         spinner = findViewById(R.id.spinner);
 
         // Initialize DatabaseHelper
@@ -77,8 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
                 // Validate input fields
                 String username = etUsername.getText().toString().trim();
                 String email = etEmail.getText().toString().trim();
-                String mobile = etMobile.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
+                String mobile = etMobile.getText().toString().trim();
                 String role = spinner.getSelectedItem().toString();
 
                 if (TextUtils.isEmpty(username)) {
@@ -94,14 +94,6 @@ public class RegisterActivity extends AppCompatActivity {
                     etEmail.setError("Invalid email format");
                     return;
                 }
-                if (TextUtils.isEmpty(mobile)) {
-                    etMobile.setError("Mobile number cannot be empty");
-                    return;
-                }
-                if (mobile.length() != 10 || !mobile.matches("\\d+")) {
-                    etMobile.setError("Enter a valid 10-digit mobile number");
-                    return;
-                }
                 if (TextUtils.isEmpty(password)) {
                     etPassword.setError("Password cannot be empty");
                     return;
@@ -110,9 +102,17 @@ public class RegisterActivity extends AppCompatActivity {
                     etPassword.setError("Password must be at least 6 characters");
                     return;
                 }
+                if (TextUtils.isEmpty(mobile)) {
+                    etMobile.setError("Mobile number cannot be empty");
+                    return;
+                }
+                if (mobile.length() != 10 || !mobile.matches("\\d+")) {
+                    etMobile.setError("Enter a valid 10-digit mobile number");
+                    return;
+                }
 
                 // Register user in the database
-                long isInserted = databaseHelper.insertUser(username, email, mobile, password, role);
+                long isInserted = databaseHelper.insertUser(username, email, password, email, role);
                 if (isInserted != 1) {
                     // Show success message
                     Toast.makeText(RegisterActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
