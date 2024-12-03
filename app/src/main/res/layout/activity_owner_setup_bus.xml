@@ -10,7 +10,7 @@
 
 
     <Button
-        android:id="@+id/buttonBook2"
+        android:id="@+id/buttonSave"
         android:layout_width="340dp"
         android:layout_height="51dp"
         android:layout_marginBottom="76dp"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonCancel2"
+        android:id="@+id/buttonRemove"
         android:layout_width="341dp"
         android:layout_height="55dp"
         android:layout_marginBottom="12dp"
@@ -102,7 +102,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/editTextStart"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="416dp"
@@ -111,17 +111,17 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="Start Location"
+            android:hint="Start Location"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
             app:layout_constraintVertical_bias="0.12" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/editTextEnd"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="360dp"
@@ -130,17 +130,17 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="End Location"
+            android:hint="End Location"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextStart"
             app:layout_constraintVertical_bias="0.12" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/editTextRoute"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="280dp"
@@ -149,17 +149,17 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="Bus route"
+            android:hint="Bus route"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.566"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
             app:layout_constraintVertical_bias="0.12" />
 
         <EditText
-            android:id="@+id/editTextText5"
+            android:id="@+id/editTextBus"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="196dp"
@@ -168,17 +168,17 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="NA - XXXX"
+            android:hint="NA - XXXX"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView21"
             app:layout_constraintVertical_bias="0.12" />
 
         <EditText
-            android:id="@+id/editTextText6"
+            android:id="@+id/editTextDriver"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="108dp"
@@ -187,13 +187,13 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="Driver username"
+            android:hint="Driver username"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view2"
+            app:layout_constraintTop_toBottomOf="@+id/textView20"
             app:layout_constraintVertical_bias="0.12" />
 
         <TextView
@@ -238,7 +238,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextText7"
+            android:id="@+id/editTextSeat"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="24dp"
@@ -247,7 +247,7 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:paddingLeft="16dp"
-            android:text="(24-48-52-etc)"
+            android:hint="(24-48-52-etc)"
             android:textColor="#757575"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

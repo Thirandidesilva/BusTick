@@ -10,7 +10,7 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database name and version
     private static final String DATABASE_NAME = "busapp.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table name and columns
     public static final String TABLE_USERS = "users";
@@ -32,6 +32,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_ROLE + " TEXT NOT NULL" +
                     ")";
 
+    // Add a new table for buses
+    public static final String TABLE_BUSES = "buses";
+    public static final String COLUMN_BUS_ID = "bus_id";
+    public static final String COLUMN_BUS_NUMBER = "bus_number";
+    public static final String COLUMN_START_LOCATION = "start_location";
+    public static final String COLUMN_END_LOCATION = "end_location";
+    public static final String COLUMN_ROUTE = "route";
+    public static final String COLUMN_DRIVER = "driver";
+    public static final String COLUMN_SEATS = "seats";
+
+    private static final String CREATE_TABLE_BUSES =
+            "CREATE TABLE " + TABLE_BUSES + " (" +
+                    COLUMN_BUS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_BUS_NUMBER + " TEXT NOT NULL, " +
+                    COLUMN_START_LOCATION + " TEXT NOT NULL, " +
+                    COLUMN_END_LOCATION + " TEXT NOT NULL, " +
+                    COLUMN_ROUTE + " TEXT NOT NULL, " +
+                    COLUMN_DRIVER + " TEXT NOT NULL, " +
+                    COLUMN_SEATS + " INTEGER NOT NULL" +
+                    ")";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -39,12 +60,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_USERS);
-        Log.d("SQLite", "Database and users table created successfully");
+        Log.d("SQLite", "Table " + TABLE_USERS + " created successfully.");
+        db.execSQL(CREATE_TABLE_BUSES);
+        Log.d("SQLite", "Table " + TABLE_BUSES + " created successfully.");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d("SQLite", "Upgrading database from version " + oldVersion + " to " + newVersion);
+
+        // Drop existing tables and recreate them
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUSES);
         onCreate(db);
         Log.d("SQLite", "Database upgraded to version " + newVersion);
     }
@@ -71,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (result != -1) {
                 Log.d("SQLite", "User inserted successfully: " +
-                        "Username=" + username + ", Email=" + email + ", Password" + password);
+                        "Username =" + username + ", Email =" + email + ", Password =" + password);
             } else {
                 Log.e("SQLite", "Failed to insert user");
             }
@@ -127,4 +154,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    public long insertBus(String busNumber, String startLocation, String endLocation, String route, String driver, int seats) {
+        SQLiteDatabase db = null;
+        long result = -1;
+
+        try{
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_BUS_NUMBER, busNumber);
+            values.put(COLUMN_START_LOCATION, startLocation);
+            values.put(COLUMN_END_LOCATION, endLocation);
+            values.put(COLUMN_ROUTE, route);
+            values.put(COLUMN_DRIVER, driver);
+            values.put(COLUMN_SEATS, seats);
+
+            result = db.insert(TABLE_BUSES, null, values);
+
+            if (result != -1) {
+                Log.d("SQLite", "Bus inserted successfully: " +
+                        "Bus Number =" + busNumber + ", Start Location =" + startLocation + ", End Location =" + endLocation);
+            } else {
+                Log.e("SQLite", "Failed to insert bus");
+            }
+        } catch (Exception e){
+            Log.e("SQLite", "Error during bus insertion", e);
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return result;
+    }
 }
+
