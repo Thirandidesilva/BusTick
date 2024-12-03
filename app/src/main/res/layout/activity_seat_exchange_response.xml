@@ -32,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewlocation" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/textViewlocation"
         android:layout_width="333dp"
         android:layout_height="32dp"
         android:text="Seat No 7 , Colombo to Galle"
@@ -44,10 +44,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/textViewName"
         android:layout_width="333dp"
         android:layout_height="32dp"
         android:text="Example Name"
@@ -82,10 +82,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMySeats" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/textViewMySeats"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="4dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextMessage"
         android:layout_width="332dp"
         android:layout_height="178dp"
         android:layout_marginTop="20dp"
@@ -107,7 +107,7 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="Text from sender."
-        app:layout_constraintBottom_toTopOf="@+id/buttonBook"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSendReq"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonBook"
+        android:id="@+id/buttonSendReq"
         android:layout_width="342dp"
         android:layout_height="49dp"
         android:layout_marginBottom="16dp"

@@ -69,7 +69,7 @@
                 app:layout_constraintTop_toBottomOf="@id/title_text" />
 
             <TextView
-                android:id="@+id/driver_name"
+                android:id="@+id/bus_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -108,7 +108,7 @@
                     android:layout_marginStart="16dp"
                     android:text="18:55 AM"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </FrameLayout>
 
 
@@ -163,7 +163,7 @@
 
             <!-- Bus Number -->
             <TextView
-                android:id="@+id/history_title_text"
+                android:id="@+id/history_message_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User 12345"
@@ -181,7 +181,7 @@
             <!-- Time -->
 
             <TextView
-                android:id="@+id/history_bus_number"
+                android:id="@+id/history_message_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -190,10 +190,10 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_title_text" />
+                app:layout_constraintTop_toBottomOf="@id/history_message_title" />
 
             <TextView
-                android:id="@+id/history_driver_name"
+                android:id="@+id/history_message_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -203,7 +203,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_bus_number" />
+                app:layout_constraintTop_toBottomOf="@id/history_message_subtitle" />
 
             <ImageView
                 android:id="@+id/history_arrow_icon"
@@ -226,7 +226,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/history_time_text"
+                    android:id="@+id/history_message_time_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

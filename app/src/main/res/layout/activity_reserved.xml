@@ -63,7 +63,7 @@
 
             <!-- Driver Name -->
             <TextView
-                android:id="@+id/driver_name"
+                android:id="@+id/bus_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -186,7 +186,7 @@
 
             <!-- Bus Number -->
             <TextView
-                android:id="@+id/history_title_text"
+                android:id="@+id/history_message_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Narammala"
@@ -198,7 +198,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/history_bus_number"
+                android:id="@+id/history_message_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -206,11 +206,11 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_title_text" />
+                app:layout_constraintTop_toBottomOf="@id/history_message_title" />
 
             <!-- Driver Name -->
             <TextView
-                android:id="@+id/history_driver_name"
+                android:id="@+id/history_message_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -218,7 +218,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/history_bus_number" />
+                app:layout_constraintTop_toBottomOf="@id/history_message_subtitle" />
 
             <!-- Arrow Icon -->
 
@@ -245,7 +245,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/history_time_text"
+                    android:id="@+id/history_message_time_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

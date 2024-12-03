@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:background="#F5F5F5"
+                android:background="@drawable/historymessagebackground"
                 android:clipToPadding="false"
                 android:elevation="4dp"
                 android:orientation="horizontal"
@@ -50,7 +50,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/driver_name"
+                        android:id="@+id/bus_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="S S P Kumarasiri"
@@ -86,6 +86,41 @@
                 android:textStyle="bold" />
 
             <!-- Seat Details Section -->
+            <!-- Seat Details Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/historymessagebackground"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Total Seats"
+                    android:textColor="#1D1B1B"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textViewTotalSeats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/messagebackground"
+                    android:elevation="2dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="24"
+                    android:textColor="#1D1B1B"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Seat Selection -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,23 +131,24 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#EFEFEF"
+                    android:background="@drawable/historymessagebackground"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Total Seats\n24"
+                    android:text="Available Seats"
                     android:textColor="#1D1B1B"
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/textViewAvailableSeats"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#EFEFEF"
+                    android:background="@drawable/messagebackground"
                     android:elevation="2dp"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Available Seats\n12"
+                    android:text="12"
                     android:textColor="#1D1B1B"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -401,7 +437,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/buttonBook"
+                android:id="@+id/buttonSendReq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
