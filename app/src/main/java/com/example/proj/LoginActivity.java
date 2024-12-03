@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,11 +59,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        String username = etEmail.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        Log.d("Login", "Email: " + email + ", Password: " + password);
 
         // Validate input
-        if (TextUtils.isEmpty(username)) {
+        if (TextUtils.isEmpty(email)) {
             etEmail.setError("Email cannot be empty");
             return;
         }
@@ -73,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Authenticate user
-        Cursor cursor = databaseHelper.authenticateUser(username, password);
+        Cursor cursor = databaseHelper.authenticateUser(email, password);
         if (cursor != null && cursor.moveToFirst()) {
             // Extract user role
             String role = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ROLE));
@@ -103,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             // Close the cursor after use
             cursor.close();
         } else {
-            Toast.makeText(LoginActivity.this, "Invalid username or password!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Invalid email or password!", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -24,12 +24,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Create table SQL
     private static final String CREATE_TABLE_USERS =
             "CREATE TABLE " + TABLE_USERS + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + // Fixed missing space before INTEGER
-                    COLUMN_USERNAME + " TEXT, " +
-                    COLUMN_EMAIL + " TEXT, " +
-                    COLUMN_PASSWORD + " TEXT, " +
-                    COLUMN_MOBILE + " TEXT, " +
-                    COLUMN_ROLE + " TEXT" +
+                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_USERNAME + " TEXT NOT NULL, " +
+                    COLUMN_EMAIL + " TEXT UNIQUE NOT NULL, " +
+                    COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                    COLUMN_MOBILE + " TEXT NOT NULL, " +
+                    COLUMN_ROLE + " TEXT NOT NULL" +
                     ")";
 
     public DatabaseHelper(Context context) {
@@ -71,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (result != -1) {
                 Log.d("SQLite", "User inserted successfully: " +
-                        "Username=" + username + ", Email=" + email);
+                        "Username=" + username + ", Email=" + email + ", Password" + password);
             } else {
                 Log.e("SQLite", "Failed to insert user");
             }
@@ -89,8 +89,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Authenticate user
     public Cursor authenticateUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
+        Log.d("SQLite", "Authenticating user with Email: " + email + ", Password: " + password);
         String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?";
         Cursor cursor = db.rawQuery(query, new String[]{email, password});
+        Log.d("SQLite", "Query returned " + cursor.getCount() + " rows.");
 
         if (cursor.getCount() > 0) {
             Log.d("SQLite", "Authentication successful for user: " + email);
@@ -107,11 +109,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_ROLE + " = ?";
         Cursor cursor = db.rawQuery(query, new String[]{role});
 
-        if (cursor.getCount() > 0) {
+        if (cursor != null && cursor.getCount() > 0) {
             Log.d("SQLite", "Users with role " + role + ":");
-            while (cursor.moveToNext()) {
-                String username = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
-                Log.d("SQLite", " - " + username);
+            int usernameIndex = cursor.getColumnIndex(COLUMN_USERNAME);
+
+            if (usernameIndex != -1) { // Ensure the column exists
+                while (cursor.moveToNext()) {
+                    String username = cursor.getString(usernameIndex);
+                    Log.d("SQLite", " - " + username);
+                }
+            } else {
+                Log.e("SQLite", "COLUMN_USERNAME does not exist in the result set.");
             }
         } else {
             Log.d("SQLite", "No users found with role: " + role);
