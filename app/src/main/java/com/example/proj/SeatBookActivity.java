@@ -55,7 +55,7 @@ public class SeatBookActivity extends AppCompatActivity {
             return false;
         });
 
-        Button buttonBook = findViewById(R.id.buttonBook);
+        Button buttonBook = findViewById(R.id.buttonSendReq);
         buttonBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
