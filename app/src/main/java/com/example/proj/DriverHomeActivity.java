@@ -65,6 +65,11 @@ public class DriverHomeActivity extends AppCompatActivity {
         // Initialize date and time TextView
         dateTimeText = findViewById(R.id.date_time_text);
 
+        // Set greeting text based on the time of day
+        TextView greetingTextTime = findViewById(R.id.greetingTextTime);
+        setGreetingText(greetingTextTime);
+
+
         // Setup Handler and Runnable for updating time
         handler = new Handler();
         updateTimeRunnable = new Runnable() {
@@ -81,6 +86,20 @@ public class DriverHomeActivity extends AppCompatActivity {
         String currentDateTime = new SimpleDateFormat("EEEE, MMM d, yyyy hh:mm:ss a", Locale.getDefault())
                 .format(new Date());
         dateTimeText.setText(currentDateTime);
+    }
+
+    private void setGreetingText(TextView greetingTextView) {
+        int currentHour = new Date().getHours();
+
+        if (currentHour >= 5 && currentHour < 12) {
+            greetingTextView.setText("Good Morning,");
+        } else if (currentHour >= 12 && currentHour < 17) {
+            greetingTextView.setText("Good Afternoon,");
+        } else if (currentHour >= 17 && currentHour < 21) {
+            greetingTextView.setText("Good Evening,");
+        } else {
+            greetingTextView.setText("Good Night,");
+        }
     }
 
     @Override
