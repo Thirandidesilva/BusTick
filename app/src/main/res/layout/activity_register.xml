@@ -71,7 +71,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.035" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -88,13 +88,13 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="320dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/textview_background"
         android:ems="10"
         android:hint="Phone Number"
@@ -117,7 +117,7 @@
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view1"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.343" />
 
     <Button
         android:id="@+id/button2"
