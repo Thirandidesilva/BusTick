@@ -2,8 +2,10 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
     private TextView busNumberTextView, startLocationTextView, endLocationTextView, routeTextView, driverTextView, seatsTextView;
-    private View seatingPlanContainer;
+    private LinearLayout seatingPlanContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +78,9 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
         // Populate the fields with the bus details
         busNumberTextView.setText(busNumber);
-        startLocationTextView.setText(startLocation);
-        endLocationTextView.setText(endLocation);
-        routeTextView.setText(route);
+//        startLocationTextView.setText(startLocation);
+//        endLocationTextView.setText(endLocation);
+//        routeTextView.setText(route);
         driverTextView.setText(driver);
         seatsTextView.setText(String.valueOf(seats));
 
@@ -104,16 +106,16 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
         // Clear the seating plan container before updating
         seatingPlanContainer.removeAllViews();
 
-        // Dynamically create seating plan with 2 rows
-        int columnsPerRow = seats / 2; // Divide seats equally between the 2 rows
-        if (seats % 2 != 0) {
-            columnsPerRow++; // If seats is odd, adjust columns for the first row
-        }
-
-        // Ensure the seat count is reasonable (e.g., 24, 48, 52)
-        if (seats == 24 || seats == 48 || seats == 52) {
-            // Create seating plan with 2 rows and dynamically calculated columns
-            createSeatingPlan(2, columnsPerRow);
+        // Dynamically create seating plan based on the number of seats
+        if (seats == 24) {
+            // Create a seating plan for a 24-seater bus (e.g., 4 rows of 6 seats)
+            createSeatingPlan(6, 4);
+        } else if (seats == 48) {
+            // Create a seating plan for a 48-seater bus (e.g., 6 rows of 8 seats)
+            createSeatingPlan(12, 4);
+        } else if (seats == 52) {
+            // Create a seating plan for a 52-seater bus (e.g., 6 rows of 8 seats + 1 row of 4 seats)
+            createSeatingPlan(13, 4); // Adjust the layout to have an extra row if needed
         } else {
             // Handle the case when the number of seats is unexpected
             Toast.makeText(this, "Invalid seating configuration", Toast.LENGTH_SHORT).show();
@@ -122,16 +124,28 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
     // Helper method to create the seating plan dynamically
     private void createSeatingPlan(int rows, int seatsPerRow) {
+        LinearLayout seatingPlanContainer = findViewById(R.id.seatingPlanContainer);
+
         for (int i = 0; i < rows; i++) {
             // Create a row layout dynamically
-            View rowView = getLayoutInflater().inflate(R.layout.seating_row_layout, seatingPlanContainer, false);
+            LinearLayout rowLayout = new LinearLayout(this);
+            rowLayout.setOrientation(LinearLayout.HORIZONTAL);
+            rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
             // Add seats to the row
             for (int j = 0; j < seatsPerRow; j++) {
-                // Dynamically create and add seats to the row view
-                View seatView = getLayoutInflater().inflate(R.layout.seat_layout, rowView, false);
-                rowView.findViewById(R.id.seat_container).addView(seatView); // Add seat to row
+                // Dynamically create a seat (TextView for simplicity)
+                TextView seatView = new TextView(this);
+                seatView.setLayoutParams(new LinearLayout.LayoutParams(0,
+                        LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+                seatView.setText(String.valueOf((i * seatsPerRow) + j + 1));
+                seatView.setGravity(Gravity.CENTER);// Set your custom background
+                rowLayout.addView(seatView); // Add seat to row
             }
-            seatingPlanContainer.addView(rowView); // Add row to seating plan
+
+            seatingPlanContainer.addView(rowLayout); // Add row to seating plan
         }
     }
+
 }

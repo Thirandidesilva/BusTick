@@ -78,7 +78,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Get the selected bus number from the spinner
-                Spinner busSpinner = findViewById(R.id.spinner);
+                Spinner busSpinner = findViewById(R.id.owner_spinner);
                 String busNumber = busSpinner.getSelectedItem().toString();
 
                 if (busNumber.isEmpty()) {
