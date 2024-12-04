@@ -3,7 +3,9 @@ package com.example.proj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +13,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SelectBusActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_bus);
+
+        // Initialize DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
 
         // Retrieve intent data passed from HomeActivity
         Intent intent = getIntent();
@@ -26,7 +33,7 @@ public class SelectBusActivity extends AppCompatActivity {
         int seats = intent.getIntExtra("SEATS", 0);
 
         // Display retrieved data
-        TextView busNumberTextView = findViewById(R.id.pick_bus);
+        Button busNumberTextView = findViewById(R.id.pick_bus);
         TextView startLocationTextView = findViewById(R.id.textStart);
         TextView endLocationTextView = findViewById(R.id.textEnd);
 
@@ -77,10 +84,27 @@ public class SelectBusActivity extends AppCompatActivity {
 
         busNumberTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Start BookingActivity
-                Intent intent = new Intent(SelectBusActivity.this, BusRouteViewActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                if(busNumber.isEmpty()) {
+                    Toast.makeText(SelectBusActivity.this, "Please select a bus", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Retrieve the bus details from the database
+                    Bus bus = databaseHelper.getBusDetails(busNumber);
+
+                    if (bus != null) {
+                        // Pass the bus details to the next activity
+                        Intent intent = new Intent(SelectBusActivity.this, SeatBookActivity.class);
+                        intent.putExtra("BUS_NUMBER", bus.getBusNumber());
+                        intent.putExtra("START_LOCATION", bus.getStartLocation());
+                        intent.putExtra("END_LOCATION", bus.getEndLocation());
+                        intent.putExtra("ROUTE", bus.getRoute());
+                        intent.putExtra("DRIVER", bus.getDriver());
+                        intent.putExtra("SEATS", bus.getSeats());
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(SelectBusActivity.this, "Bus details not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
