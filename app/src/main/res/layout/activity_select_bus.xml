@@ -29,37 +29,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins"
-            android:text="Pick a time "
+            android:text="Pick a Bus"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.133"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-        <TextView
-            android:id="@+id/pick_time"
-            android:layout_width="310dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:text="07 : 55 AM  -  9 : 55 AM"
-            android:textSize="20sp"
-            android:background="@drawable/messagebackground"
-            android:gravity="center"
-            android:fontFamily="@font/poppins"
-            app:layout_constraintBottom_toTopOf="@+id/pick_time2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.689" />
-
 
         <TextView
-            android:id="@+id/pick_time2"
+            android:id="@+id/pick_bus"
             android:layout_width="310dp"
             android:layout_height="48dp"
             android:layout_marginBottom="340dp"
-            android:text="08 : 55 AM  -  10 : 55 AM"
+            android:hint="NA - 0000"
             android:textSize="20sp"
             android:background="@drawable/messagebackground"
             android:gravity="center"
@@ -97,16 +80,30 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textStart"
                 android:layout_width="317dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="20dp"
-                android:text="Start location     -     End location"
+                android:text=""
+                android:hint="Start location"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <TextView
+                android:id="@+id/textEnd"
+                android:layout_width="317dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="20dp"
+                android:text=""
+                android:hint="End location"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textStart" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

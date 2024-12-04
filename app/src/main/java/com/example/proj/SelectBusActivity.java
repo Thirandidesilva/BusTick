@@ -16,6 +16,38 @@ public class SelectBusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_bus);
 
+        // Retrieve intent data passed from HomeActivity
+        Intent intent = getIntent();
+        String busNumber = intent.getStringExtra("BUS_NUMBER");
+        String startLocation = intent.getStringExtra("START_LOCATION");
+        String endLocation = intent.getStringExtra("END_LOCATION");
+        String route = intent.getStringExtra("ROUTE");
+        String driver = intent.getStringExtra("DRIVER");
+        int seats = intent.getIntExtra("SEATS", 0);
+
+        // Display retrieved data
+        TextView busNumberTextView = findViewById(R.id.pick_bus);
+        TextView startLocationTextView = findViewById(R.id.textStart);
+        TextView endLocationTextView = findViewById(R.id.textEnd);
+
+        if (busNumber != null) {
+            busNumberTextView.setText(busNumber);
+        } else {
+            busNumberTextView.setText("Bus number unavailable");
+        }
+
+        if (startLocation != null) {
+            startLocationTextView.setText(startLocation);
+        } else {
+            startLocationTextView.setText("Start location unavailable");
+        }
+
+        if (endLocation != null) {
+            endLocationTextView.setText(endLocation);
+        } else {
+            endLocationTextView.setText("End location unavailable");
+        }
+
         // Initialize BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -43,9 +75,7 @@ public class SelectBusActivity extends AppCompatActivity {
             return false;
         });
 
-        // Add a click listener to the TextView with ID 'pick_time'
-        TextView pickTimeTextView = findViewById(R.id.pick_time);
-        pickTimeTextView.setOnClickListener(new View.OnClickListener() {
+        busNumberTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Start BookingActivity
