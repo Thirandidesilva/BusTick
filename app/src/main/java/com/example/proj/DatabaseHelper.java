@@ -215,4 +215,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return busList;
     }
+
+    // Method to get details of a bus by its bus number
+    public Bus getBusDetails(String busNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Bus bus = null;
+
+        // Query to fetch the bus details
+        String query = "SELECT " +
+                COLUMN_BUS_NUMBER + ", " +
+                COLUMN_START_LOCATION + ", " +
+                COLUMN_END_LOCATION + ", " +
+                COLUMN_ROUTE + ", " +
+                COLUMN_DRIVER + ", " +
+                COLUMN_SEATS +
+                " FROM " + TABLE_BUSES +
+                " WHERE " + COLUMN_BUS_NUMBER + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{busNumber});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            // Extract bus details from cursor
+            String startLocation = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_START_LOCATION));
+            String endLocation = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_END_LOCATION));
+            String route = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ROUTE));
+            String driver = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DRIVER));
+            int seats = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SEATS));
+
+            bus = new Bus(busNumber, startLocation, endLocation, route, driver, seats);
+        }
+
+        cursor.close();
+        db.close();
+
+        return bus;
+    }
 }

@@ -68,8 +68,30 @@ public class OwnerHomeActivity extends AppCompatActivity {
         view_details_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OwnerHomeActivity.this, OwnerViewBusDetailsActivity.class);
-                startActivity(intent);
+                // Get the selected bus number from the spinner
+                Spinner busSpinner = findViewById(R.id.spinner);
+                String busNumber = busSpinner.getSelectedItem().toString();
+
+                if (busNumber.isEmpty()) {
+                    Toast.makeText(OwnerHomeActivity.this, "Please select a bus", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Retrieve the bus details from the database
+                    Bus bus = databaseHelper.getBusDetails(busNumber);
+
+                    if (bus != null) {
+                        // Pass the bus details to the next activity
+                        Intent intent = new Intent(OwnerHomeActivity.this, OwnerViewBusDetailsActivity.class);
+                        intent.putExtra("BUS_NUMBER", bus.getBusNumber());
+                        intent.putExtra("START_LOCATION", bus.getStartLocation());
+                        intent.putExtra("END_LOCATION", bus.getEndLocation());
+                        intent.putExtra("ROUTE", bus.getRoute());
+                        intent.putExtra("DRIVER", bus.getDriver());
+                        intent.putExtra("SEATS", bus.getSeats());
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(OwnerHomeActivity.this, "Bus details not found", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
