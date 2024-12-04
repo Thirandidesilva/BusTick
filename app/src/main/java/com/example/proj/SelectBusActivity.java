@@ -25,6 +25,7 @@ public class SelectBusActivity extends AppCompatActivity {
 
         // Retrieve intent data passed from HomeActivity
         Intent intent = getIntent();
+        int busId = intent.getIntExtra("BUS_ID", 0);
         String busNumber = intent.getStringExtra("BUS_NUMBER");
         String startLocation = intent.getStringExtra("START_LOCATION");
         String endLocation = intent.getStringExtra("END_LOCATION");
@@ -94,6 +95,7 @@ public class SelectBusActivity extends AppCompatActivity {
                     if (bus != null) {
                         // Pass the bus details to the next activity
                         Intent intent = new Intent(SelectBusActivity.this, SeatBookActivity.class);
+                        intent.putExtra("BUS_ID", bus.getBusId());
                         intent.putExtra("BUS_NUMBER", bus.getBusNumber());
                         intent.putExtra("START_LOCATION", bus.getStartLocation());
                         intent.putExtra("END_LOCATION", bus.getEndLocation());

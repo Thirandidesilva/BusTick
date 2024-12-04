@@ -13,9 +13,9 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database name and version
     private static final String DATABASE_NAME = "busapp.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
-    // Table name and columns
+    // Users table
     public static final String TABLE_USERS = "users";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_USERNAME = "username";
@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_ROLE + " TEXT NOT NULL" +
                     ")";
 
-    // Add a new table for buses
+    // Buses table
     public static final String TABLE_BUSES = "buses";
     public static final String COLUMN_BUS_ID = "bus_id";
     public static final String COLUMN_USER_ID = "user_id";
@@ -57,6 +57,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_SEATS + " INTEGER NOT NULL" +
                     ")";
 
+    // Seats table
+    public static final String TABLE_SEATS = "seats";
+    public static final String COLUMN_SEAT_ID = "seat_id";
+    public static final String COLUMN_SEAT_NUMBER = "seat_number";
+    public static final String COLUMN_STATUS = "status";
+
+    // Create seats table
+    private static final String CREATE_TABLE_SEATS =
+            "CREATE TABLE " + TABLE_SEATS + " (" +
+                    COLUMN_SEAT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_BUS_ID + " INTEGER NOT NULL, " +
+                    COLUMN_USER_ID + " INTEGER, " +
+                    COLUMN_SEAT_NUMBER + " INTEGER NOT NULL, " +
+                    COLUMN_STATUS + " TEXT NOT NULL, " +
+                    "FOREIGN KEY(" + COLUMN_BUS_ID + ") REFERENCES " + TABLE_BUSES + "(" + COLUMN_BUS_ID + "), " +
+                    "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COLUMN_ID + ")" +
+                    ")";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -67,6 +85,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d("SQLite", "Table " + TABLE_USERS + " created successfully.");
         db.execSQL(CREATE_TABLE_BUSES);
         Log.d("SQLite", "Table " + TABLE_BUSES + " created successfully.");
+        db.execSQL(CREATE_TABLE_SEATS);
+        Log.d("SQLite", "Table " + TABLE_SEATS + " created successfully.");
     }
 
     @Override
@@ -76,6 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drop existing tables and recreate them
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUSES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SEATS);
         onCreate(db);
         Log.d("SQLite", "Database upgraded to version " + newVersion);
     }
@@ -271,6 +292,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Query to fetch the bus details
         String query = "SELECT " +
+                COLUMN_BUS_ID + ", " +
                 COLUMN_BUS_NUMBER + ", " +
                 COLUMN_START_LOCATION + ", " +
                 COLUMN_END_LOCATION + ", " +
@@ -284,13 +306,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             // Extract bus details from cursor
+            int busId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_BUS_ID));
             String startLocation = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_START_LOCATION));
             String endLocation = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_END_LOCATION));
             String route = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ROUTE));
             String driver = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DRIVER));
             int seats = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SEATS));
 
-            bus = new Bus(busNumber, startLocation, endLocation, route, driver, seats);
+            bus = new Bus(busId, busNumber, startLocation, endLocation, route, driver, seats);
         }
 
         cursor.close();
@@ -306,6 +329,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Query to fetch the bus details
         String query = "SELECT " +
+                COLUMN_BUS_ID+ ", " +
                 COLUMN_BUS_NUMBER + ", " +
                 COLUMN_START_LOCATION + ", " +
                 COLUMN_END_LOCATION + ", " +
@@ -319,17 +343,70 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             // Extract bus details from cursor
+            int busId = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_BUS_ID));
             String busNumber = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BUS_NUMBER));
             String route = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ROUTE));
             String driver = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DRIVER));
             int seats = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SEATS));
 
-            bus = new Bus(busNumber, startLocation, endLocation, route, driver, seats);
+            bus = new Bus(busId, busNumber, startLocation, endLocation, route, driver, seats);
         }
 
         cursor.close();
         db.close();
 
         return bus;
+    }
+
+    // Initialize seats for a bus
+    public void initializeSeats(int busId, int seats) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+
+        try {
+            for (int i = 1; i <= seats; i++) {
+                ContentValues values = new ContentValues();
+                values.put(COLUMN_BUS_ID, busId);
+                values.put(COLUMN_SEAT_NUMBER, i);
+                values.put(COLUMN_STATUS, "available");
+                db.insert(TABLE_SEATS, null, values);
+            }
+            db.setTransactionSuccessful();
+            Log.d("SQLite", "Seats initialized for bus ID: " + busId);
+        } catch (Exception e) {
+            Log.e("SQLite", "Error initializing seats", e);
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+    }
+
+    // Book a seat
+    public boolean bookSeat(int busId, int seatNumber, int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_ID, userId);
+        values.put(COLUMN_STATUS, "booked");
+
+        int rowsUpdated = db.update(TABLE_SEATS, values,
+                COLUMN_BUS_ID + " = ? AND " + COLUMN_SEAT_NUMBER + " = ? AND " + COLUMN_STATUS + " = ?",
+                new String[]{String.valueOf(busId), String.valueOf(seatNumber), "available"});
+
+        db.close();
+        return rowsUpdated > 0; // Returns true if the seat was successfully booked
+    }
+
+    // Get seating details
+    public Cursor getSeatingDetails(int busId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(
+                TABLE_SEATS,
+                new String[]{COLUMN_SEAT_NUMBER, COLUMN_STATUS}, // Ensure these columns exist
+                COLUMN_BUS_ID + " = ?",
+                new String[]{String.valueOf(busId)},
+                null, null,
+                COLUMN_SEAT_NUMBER + " ASC" // Optional: Order seats by number
+        );
     }
 }

@@ -1,6 +1,7 @@
 package com.example.proj;
 
 public class Bus {
+    private int busId;
     private String busNumber;
     private String startLocation;
     private String endLocation;
@@ -9,13 +10,22 @@ public class Bus {
     private int seats;
 
     // Constructor
-    public Bus(String busNumber, String startLocation, String endLocation, String route, String driver, int seats) {
+    public Bus(int busId, String busNumber, String startLocation, String endLocation, String route, String driver, int seats) {
+        this.busId = busId;
         this.busNumber = busNumber;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.route = route;
         this.driver = driver;
         this.seats = seats;
+    }
+
+    public int getBusId() {
+        return busId;
+    }
+
+    public void setBusId(int busId) {
+        this.busId = busId;
     }
 
     public String getBusNumber() {
