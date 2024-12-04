@@ -27,7 +27,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="366dp"
             android:layout_height="314dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="84dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/historymessagebackground"
             app:layout_constraintBottom_toTopOf="@+id/view_details_btn"
