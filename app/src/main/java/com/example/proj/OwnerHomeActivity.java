@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +16,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class OwnerHomeActivity extends AppCompatActivity {
+
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_owner_home);
+
+        // Initialize DatabaseHelper
+        databaseHelper = new DatabaseHelper(this);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -64,7 +73,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
             }
         });
 
-        Button view_details_btn2 = findViewById(R.id.view_details_btn2);
+        Button view_details_btn2 = findViewById(R.id.add_bus_btn);
         view_details_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,21 +82,54 @@ public class OwnerHomeActivity extends AppCompatActivity {
             }
         });
 
+        // Reference to the spinner
         Spinner spinner = findViewById(R.id.owner_spinner);
 
+        // Populate spinner with buses from the database
+        populateBusSpinner(spinner);
+
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.dropdown_items,
-                android.R.layout.simple_spinner_item
-        );
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//                this,
+//                R.array.dropdown_items,
+//                android.R.layout.simple_spinner_item
+//        );
 
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+//        spinner.setAdapter(adapter);
+    }
 
+    private void populateBusSpinner(Spinner spinner) {
+        // Retrieve bus numbers from the database
+        List<String> busList = databaseHelper.getAllBuses();
+
+        if (busList.isEmpty()) {
+            Toast.makeText(this, "No buses available", Toast.LENGTH_SHORT).show();
+        } else {
+            // Create an ArrayAdapter
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_spinner_item,
+                    busList
+            );
+
+            // Set dropdown style
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            // Assign the adapter to the spinner
+            spinner.setAdapter(adapter);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (databaseHelper != null) {
+            databaseHelper.close();
+        }
     }
 
 }

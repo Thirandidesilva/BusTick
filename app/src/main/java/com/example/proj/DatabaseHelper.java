@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database name and version
     private static final String DATABASE_NAME = "busapp.db";
@@ -35,6 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Add a new table for buses
     public static final String TABLE_BUSES = "buses";
     public static final String COLUMN_BUS_ID = "bus_id";
+    public static final String COLUMN_USER_ID = "user_id";
     public static final String COLUMN_BUS_NUMBER = "bus_number";
     public static final String COLUMN_START_LOCATION = "start_location";
     public static final String COLUMN_END_LOCATION = "end_location";
@@ -186,5 +190,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return result;
+    }
+
+    public List<String> getAllBuses() {
+        List<String> busList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Correct SQL query with proper spaces between keywords and table/column names
+        String query = "SELECT " + COLUMN_BUS_NUMBER + " FROM " + TABLE_BUSES;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Fetch the bus number from the cursor
+                String busNumber = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_BUS_NUMBER));
+                busList.add(busNumber);
+            } while (cursor.moveToNext());
+        }
+
+        // Close the cursor and database
+        cursor.close();
+        db.close();
+
+        return busList;
     }
 }

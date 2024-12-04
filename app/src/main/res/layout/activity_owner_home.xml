@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
-        android:id="@+id/view_details_btn2"
+        android:id="@+id/add_bus_btn"
         android:layout_width="357dp"
         android:layout_height="51dp"
         android:layout_marginTop="12dp"
