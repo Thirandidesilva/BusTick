@@ -2,8 +2,10 @@ package com.example.proj;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +15,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DriverHomeActivity extends AppCompatActivity {
+
+    private TextView dateTimeText;
+    private Handler handler;
+    private Runnable updateTimeRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +72,54 @@ public class DriverHomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Initialize date and time TextView
+        dateTimeText = findViewById(R.id.date_time_text);
+
+        // Set greeting text based on the time of day
+        TextView greetingTextTime = findViewById(R.id.greetingTextTime);
+        setGreetingText(greetingTextTime);
+
+
+        // Setup Handler and Runnable for updating time
+        handler = new Handler();
+        updateTimeRunnable = new Runnable() {
+            @Override
+            public void run() {
+                updateDateTime();
+                handler.postDelayed(this, 1000); // Update every second
+            }
+        };
+        handler.post(updateTimeRunnable);
     }
 
+    private void updateDateTime() {
+        String currentDateTime = new SimpleDateFormat("EEEE, MMM d, yyyy hh:mm:ss a", Locale.getDefault())
+                .format(new Date());
+        dateTimeText.setText(currentDateTime);
+    }
+
+    private void setGreetingText(TextView greetingTextView) {
+        int currentHour = new Date().getHours();
+
+        if (currentHour >= 5 && currentHour < 12) {
+            greetingTextView.setText("Good Morning,");
+        } else if (currentHour >= 12 && currentHour < 17) {
+            greetingTextView.setText("Good Afternoon,");
+        } else if (currentHour >= 17 && currentHour < 21) {
+            greetingTextView.setText("Good Evening,");
+        } else {
+            greetingTextView.setText("Good Night,");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (handler != null) {
+            handler.removeCallbacks(updateTimeRunnable); // Remove callbacks to avoid memory leaks
+        }
+    }
 }
+
+
