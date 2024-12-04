@@ -30,11 +30,10 @@
             android:layout_marginTop="84dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/historymessagebackground"
-            app:layout_constraintBottom_toTopOf="@+id/view_details_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9">
+            app:layout_constraintTop_toBottomOf="@+id/greetingTextTime">
 
             <TextView
                 android:id="@+id/textView13"
