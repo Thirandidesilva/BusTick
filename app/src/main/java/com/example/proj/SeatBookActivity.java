@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +20,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class SeatBookActivity extends AppCompatActivity {
 
-    private DatabaseHelper dbHelper;
+    private DatabaseHelper databaseHelper;
     private TextView busNumberTextView, driverTextView, seatsTextView;
     private LinearLayout seatingPlanContainer;
+
+    // Store the selected seat number
+    private int selectedSeatNumber = -1; // -1 means no seat is selected initially
 
     private int getUserId() {
         return 1; // Static value for testing purposes
@@ -91,105 +97,160 @@ public class SeatBookActivity extends AppCompatActivity {
         seatsTextView.setText(String.valueOf(seats));
 
         // Update the seating plan based on the number of seats of the bus
-        updateSeatingPlan(busId, seats);
+        updateSeatingPlan(seats);
+        updateSeatStatus(busId);
 
         Button buttonBook = findViewById(R.id.buttonBook);
         buttonBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CompletedActivity.class);
-                startActivity(intent);
+                // Check if a seat has been selected
+                if (selectedSeatNumber != -1) {
+                    // Proceed with booking the selected seat
+                    int busId = getIntent().getIntExtra("BUS_ID", 0);
+                    int userId = getUserId();  // Use the dummy or real user ID
+
+                    // Call the bookSeat method from the database helper
+                    DatabaseHelper databaseHelper = new DatabaseHelper(SeatBookActivity.this);
+                    boolean isBooked = databaseHelper.bookSeat(busId, selectedSeatNumber, userId);
+
+                    if (isBooked) {
+                        updateSeatStatus(busId); // Refresh the UI after successful booking
+                        Toast.makeText(SeatBookActivity.this, "Seat " + selectedSeatNumber + " booked successfully!", Toast.LENGTH_SHORT).show();
+
+                        // Navigate to the seat book confirmation page
+                        Intent confirmationIntent = new Intent(SeatBookActivity.this, CompletedActivity.class);
+                        confirmationIntent.putExtra("SELECTED_SEAT", selectedSeatNumber);
+                        startActivity(confirmationIntent);
+                    } else {
+                        Toast.makeText(SeatBookActivity.this, "Failed to book seat " + selectedSeatNumber + ". Try another seat.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(SeatBookActivity.this, "Please select a seat to book.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
         Button buttonCancel = findViewById(R.id.buttonCancel);
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SeatBookActivity.this, CancelledActivity.class);
-                startActivity(intent);
+                // Check if a seat has been selected
+                if (selectedSeatNumber != -1) {
+                    int busId = getIntent().getIntExtra("BUS_ID", 0);
+                    int userId = getUserId();  // Use the dummy or real user ID
+
+                    // Call the cancelSeatBooking method from the database helper
+                    DatabaseHelper databaseHelper = new DatabaseHelper(SeatBookActivity.this);
+                    boolean isCanceled = databaseHelper.cancelSeatBooking(busId, selectedSeatNumber, userId);
+
+                    if (isCanceled) {
+                        // Successfully canceled the seat booking
+                        updateSeatStatus(busId);  // Refresh the seat status UI
+                        Toast.makeText(SeatBookActivity.this, "Booking for seat " + selectedSeatNumber + " canceled successfully.", Toast.LENGTH_SHORT).show();
+
+                        // Navigate to the canceled confirmation page (Optional)
+                        Intent canceledIntent = new Intent(SeatBookActivity.this, CancelledActivity.class);
+                        canceledIntent.putExtra("SELECTED_SEAT", selectedSeatNumber);
+                        startActivity(canceledIntent);
+                    } else {
+                        // Failed to cancel the booking (e.g., the seat might not be booked by the user)
+                        Toast.makeText(SeatBookActivity.this, "Failed to cancel booking for seat " + selectedSeatNumber + ".", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // No seat selected for cancelation
+                    Toast.makeText(SeatBookActivity.this, "Please select a seat to cancel the booking.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
     // Method to update the seating plan dynamically based on the bus type (seats)
-    private void updateSeatingPlan(int busId, int seats) {
-        // Clear the seating plan container
+    private void updateSeatingPlan(int seats) {
+        // Clear the seating plan container before updating
         seatingPlanContainer.removeAllViews();
 
-        // Get seating details from the database
-        Cursor cursor = dbHelper.getSeatingDetails(busId);
-
-        if (cursor.moveToFirst()) {
-            for (int i = 0; i < seats; i++) {
-                // Create a row layout dynamically for every 4 seats (or seatsPerRow)
-                LinearLayout rowLayout = new LinearLayout(this);
-                rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-                rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                for (int j = 0; j < 4 && !cursor.isAfterLast(); j++) {
-                    int seatNumber = cursor.getInt(cursor.getColumnIndex(dbHelper.COLUMN_SEAT_NUMBER));
-                    String status = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_STATUS));
-
-                    // Create a TextView for each seat
-                    TextView seatView = new TextView(this);
-                    seatView.setLayoutParams(new LinearLayout.LayoutParams(0,
-                            LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-                    seatView.setText(String.valueOf(seatNumber));
-                    seatView.setGravity(Gravity.CENTER);
-
-                    // Set seat background color based on status
-                    if ("booked".equals(status)) {
-                        seatView.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
-                    } else {
-                        seatView.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                        seatView.setOnClickListener(v -> {
-                            // Attempt to book the seat
-                            if (dbHelper.bookSeat(busId, seatNumber, getUserId())) {
-                                Toast.makeText(this, "Seat " + seatNumber + " booked successfully!", Toast.LENGTH_SHORT).show();
-                                updateSeatingPlan(busId, seats); // Refresh layout
-                            } else {
-                                Toast.makeText(this, "Seat " + seatNumber + " is already booked.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    rowLayout.addView(seatView); // Add seat to the row
-                    cursor.moveToNext(); // Move to next seat
-                }
-
-                seatingPlanContainer.addView(rowLayout); // Add row to container
-            }
+        // Dynamically create seating plan based on the number of seats
+        if (seats == 24) {
+            // Create a seating plan for a 24-seater bus (e.g., 4 rows of 6 seats)
+            createSeatingPlan(6, 4);
+        } else if (seats == 48) {
+            // Create a seating plan for a 48-seater bus (e.g., 6 rows of 8 seats)
+            createSeatingPlan(12, 4);
+        } else if (seats == 52) {
+            // Create a seating plan for a 52-seater bus (e.g., 6 rows of 8 seats + 1 row of 4 seats)
+            createSeatingPlan(13, 4); // Adjust the layout to have an extra row if needed
+        } else {
+            // Handle the case when the number of seats is unexpected
+            Toast.makeText(this, "Invalid seating configuration", Toast.LENGTH_SHORT).show();
         }
-
-        cursor.close();
-        dbHelper.close();
     }
-
 
     // Helper method to create the seating plan dynamically
     private void createSeatingPlan(int rows, int seatsPerRow) {
-        LinearLayout seatingPlanContainer = findViewById(R.id.seatingPlanContainer);
+        seatingPlanContainer.removeAllViews(); // Ensure container is cleared.
 
         for (int i = 0; i < rows; i++) {
-            // Create a row layout dynamically
             LinearLayout rowLayout = new LinearLayout(this);
             rowLayout.setOrientation(LinearLayout.HORIZONTAL);
             rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-            // Add seats to the row
             for (int j = 0; j < seatsPerRow; j++) {
-                // Dynamically create a seat (TextView for simplicity)
                 TextView seatView = new TextView(this);
+                int seatNumber = (i * seatsPerRow) + j + 1;
                 seatView.setLayoutParams(new LinearLayout.LayoutParams(0,
                         LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-                seatView.setText(String.valueOf((i * seatsPerRow) + j + 1));
-                seatView.setGravity(Gravity.CENTER);// Set your custom background
-                rowLayout.addView(seatView); // Add seat to row
+                seatView.setText(String.valueOf(seatNumber));
+                seatView.setGravity(Gravity.CENTER);
+                seatView.setBackgroundResource(R.drawable.textview_background); // Add a custom background.
+                seatView.setPadding(16, 16, 16, 16);
+
+                // Set the seat's click listener
+                seatView.setOnClickListener(v -> {
+                    selectedSeatNumber = seatNumber;  // Store the selected seat number
+                    seatView.setBackgroundResource(R.drawable.selected_seat); // Highlight the selected seat
+                });
+
+                rowLayout.addView(seatView);
             }
 
-            seatingPlanContainer.addView(rowLayout); // Add row to seating plan
+            seatingPlanContainer.addView(rowLayout);
         }
+    }
+
+    private void updateSeatStatus(int busId) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        List<Seat> seatList = databaseHelper.getAllSeatsForBus(busId);
+
+        for (Seat seat : seatList) {
+            int seatNumber = seat.getSeatNumber();
+            String status = seat.getStatus();
+
+            // Update seat appearance based on its status
+            TextView seatView = findSeatViewByNumber(seatNumber); // Custom helper method to locate the seat view
+            if (seatView != null) {
+                if ("booked".equalsIgnoreCase(status)) {
+                    seatView.setBackgroundResource(R.drawable.seat_booked);
+                } else if ("available".equalsIgnoreCase(status)) {
+                    seatView.setBackgroundResource(R.drawable.seat_available);
+                }
+            }
+        }
+    }
+
+    private TextView findSeatViewByNumber(int seatNumber) {
+        // Traverse the seating container to locate the TextView for the seat number.
+        for (int i = 0; i < seatingPlanContainer.getChildCount(); i++) {
+            LinearLayout row = (LinearLayout) seatingPlanContainer.getChildAt(i);
+            for (int j = 0; j < row.getChildCount(); j++) {
+                TextView seatView = (TextView) row.getChildAt(j);
+                if (Integer.parseInt(seatView.getText().toString()) == seatNumber) {
+                    return seatView;
+                }
+            }
+        }
+        return null;
     }
 }

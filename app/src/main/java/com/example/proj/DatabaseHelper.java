@@ -13,7 +13,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Database name and version
     private static final String DATABASE_NAME = "busapp.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Users table
     public static final String TABLE_USERS = "users";
@@ -197,6 +197,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             result = db.insert(TABLE_BUSES, null, values);
 
             if (result != -1) {
+                initializeSeats((int) result, seats);
                 Log.d("SQLite", "Bus inserted successfully: " +
                         "Bus Number=" + busNumber + ", Start Location=" + startLocation + ", End Location" + endLocation);
             } else {
@@ -385,8 +386,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean bookSeat(int busId, int seatNumber, int userId) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        // Use a dummy ID if userId is null or invalid
+        int effectiveUserId = (userId != 0) ? userId : 1;
+
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_ID, userId);
+        values.put(COLUMN_USER_ID, effectiveUserId);
         values.put(COLUMN_STATUS, "booked");
 
         int rowsUpdated = db.update(TABLE_SEATS, values,
@@ -398,15 +402,62 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Get seating details
-    public Cursor getSeatingDetails(int busId) {
+    public List<Seat> getAllSeatsForBus(int busId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(
-                TABLE_SEATS,
-                new String[]{COLUMN_SEAT_NUMBER, COLUMN_STATUS}, // Ensure these columns exist
-                COLUMN_BUS_ID + " = ?",
-                new String[]{String.valueOf(busId)},
-                null, null,
-                COLUMN_SEAT_NUMBER + " ASC" // Optional: Order seats by number
-        );
+        List<Seat> seatList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SEATS + " WHERE " + COLUMN_BUS_ID + " = ?", new String[]{String.valueOf(busId)});
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                int busNumber = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_BUS_ID));
+                int seatNumber = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SEAT_NUMBER));
+                String status = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STATUS));
+
+                seatList.add(new Seat(busNumber, seatNumber, status));
+                Log.d("SQLite", "Retrieved Seat - Bus ID: " + busNumber + ", Seat Number: " + seatNumber + ", Status: " + status);
+            }
+            cursor.close();
+        } else {
+            Log.d("SQLite", "No seats found for bus ID: " + busId);
+        }
+
+        db.close();
+        return seatList;
+    }
+
+    // Method to cancel seat booking
+    public boolean cancelSeatBooking(int busId, int seatNumber, int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Use a dummy ID if userId is null or invalid
+        int effectiveUserId = (userId != 0) ? userId : 1;
+
+        // Check if the seat is booked by the current user
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SEATS + " WHERE " + COLUMN_BUS_ID + " = ? AND " + COLUMN_SEAT_NUMBER + " = ? AND " + COLUMN_USER_ID + " = ? AND " + COLUMN_STATUS + " = ?",
+                new String[]{String.valueOf(busId), String.valueOf(seatNumber), String.valueOf(effectiveUserId), "booked"});
+
+        if (cursor != null && cursor.getCount() > 0) {
+            // If seat is booked by the user, proceed to cancel the booking
+
+            // Set seat status to 'available' and remove user association
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_STATUS, "available");
+            values.putNull(COLUMN_USER_ID); // Remove the user ID as the seat is now available
+
+            // Update the seat status to 'available'
+            int rowsUpdated = db.update(TABLE_SEATS, values, COLUMN_BUS_ID + " = ? AND " + COLUMN_SEAT_NUMBER + " = ?",
+                    new String[]{String.valueOf(busId), String.valueOf(seatNumber)});
+
+            cursor.close();
+
+            // Return true if the seat status update was successful
+            return rowsUpdated > 0;
+        } else {
+            // No booking found for the selected seat by the current user
+            if (cursor != null) {
+                cursor.close();
+            }
+            return false;
+        }
     }
 }
