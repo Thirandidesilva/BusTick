@@ -90,6 +90,7 @@ public class OwnerHomeActivity extends AppCompatActivity {
                     if (bus != null) {
                         // Pass the bus details to the next activity
                         Intent intent = new Intent(OwnerHomeActivity.this, OwnerViewBusDetailsActivity.class);
+                        intent.putExtra("BUS_ID", bus.getBusId());
                         intent.putExtra("BUS_NUMBER", bus.getBusNumber());
                         intent.putExtra("START_LOCATION", bus.getStartLocation());
                         intent.putExtra("END_LOCATION", bus.getEndLocation());

@@ -17,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
     private TextView busNumberTextView, startLocationTextView, endLocationTextView, routeTextView, driverTextView, seatsTextView;
@@ -69,6 +71,7 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
         // Get the bus details passed from OwnerHomeActivity
         Intent intent = getIntent();
+        int busId = intent.getIntExtra("BUS_ID", 0);
         String busNumber = intent.getStringExtra("BUS_NUMBER");
         String startLocation = intent.getStringExtra("START_LOCATION");
         String endLocation = intent.getStringExtra("END_LOCATION");
@@ -86,6 +89,8 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
         // Update the seating plan based on the bus type (seats)
         updateSeatingPlan(seats);
+        // Convert the string bus number to an int
+        updateSeatStatus(busId);
 
         // Handle button clicks
         Button buttonEdit = findViewById(R.id.buttonEdit);
@@ -124,28 +129,62 @@ public class OwnerViewBusDetailsActivity extends AppCompatActivity {
 
     // Helper method to create the seating plan dynamically
     private void createSeatingPlan(int rows, int seatsPerRow) {
-        LinearLayout seatingPlanContainer = findViewById(R.id.seatingPlanContainer);
+        seatingPlanContainer.removeAllViews(); // Ensure container is cleared.
 
         for (int i = 0; i < rows; i++) {
-            // Create a row layout dynamically
             LinearLayout rowLayout = new LinearLayout(this);
             rowLayout.setOrientation(LinearLayout.HORIZONTAL);
             rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-            // Add seats to the row
             for (int j = 0; j < seatsPerRow; j++) {
-                // Dynamically create a seat (TextView for simplicity)
                 TextView seatView = new TextView(this);
+                int seatNumber = (i * seatsPerRow) + j + 1;
                 seatView.setLayoutParams(new LinearLayout.LayoutParams(0,
                         LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-                seatView.setText(String.valueOf((i * seatsPerRow) + j + 1));
-                seatView.setGravity(Gravity.CENTER);// Set your custom background
-                rowLayout.addView(seatView); // Add seat to row
+                seatView.setText(String.valueOf(seatNumber));
+                seatView.setGravity(Gravity.CENTER);
+                seatView.setBackgroundResource(R.drawable.textview_background); // Add a custom background.
+                seatView.setPadding(16, 16, 16, 16);
+
+                rowLayout.addView(seatView);
             }
 
-            seatingPlanContainer.addView(rowLayout); // Add row to seating plan
+            seatingPlanContainer.addView(rowLayout);
         }
     }
 
+    private void updateSeatStatus(int busId) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        List<Seat> seatList = databaseHelper.getAllSeatsForBus(busId);
+
+        for (Seat seat : seatList) {
+            int seatNumber = seat.getSeatNumber();
+            String status = seat.getStatus();
+
+            // Update seat appearance based on its status
+            TextView seatView = findSeatViewByNumber(seatNumber); // Custom helper method to locate the seat view
+            if (seatView != null) {
+                if ("booked".equalsIgnoreCase(status)) {
+                    seatView.setBackgroundResource(R.drawable.seat_booked);
+                } else if ("available".equalsIgnoreCase(status)) {
+                    seatView.setBackgroundResource(R.drawable.seat_available);
+                }
+            }
+        }
+    }
+
+    private TextView findSeatViewByNumber(int seatNumber) {
+        // Traverse the seating container to locate the TextView for the seat number.
+        for (int i = 0; i < seatingPlanContainer.getChildCount(); i++) {
+            LinearLayout row = (LinearLayout) seatingPlanContainer.getChildAt(i);
+            for (int j = 0; j < row.getChildCount(); j++) {
+                TextView seatView = (TextView) row.getChildAt(j);
+                if (Integer.parseInt(seatView.getText().toString()) == seatNumber) {
+                    return seatView;
+                }
+            }
+        }
+        return null;
+    }
 }

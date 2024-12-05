@@ -215,6 +215,13 @@
             android:background="#F28B82"
             android:text="Cancel" />
 
+        <Button
+            android:id="@+id/buttonSwapSeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Seat Swap"
+            android:layout_margin="16dp" />
+
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="match_parent"

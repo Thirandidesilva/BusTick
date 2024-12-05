@@ -164,6 +164,22 @@ public class SeatBookActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonSwapSeat = findViewById(R.id.buttonSwapSeat);
+        buttonSwapSeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Check if a seat is selected
+                if (selectedSeatNumber != -1) {
+                    Intent swapIntent = new Intent(SeatBookActivity.this, SeatExchangeRequestActivity.class);
+                    swapIntent.putExtra("SELECTED_SEAT", selectedSeatNumber); // Pass the selected seat number
+                    swapIntent.putExtra("BUS_ID", getIntent().getIntExtra("BUS_ID", 0)); // Pass bus ID
+                    startActivity(swapIntent); // Start the seat swap request activity
+                } else {
+                    Toast.makeText(SeatBookActivity.this, "Please select a seat to request a swap.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     // Method to update the seating plan dynamically based on the bus type (seats)
