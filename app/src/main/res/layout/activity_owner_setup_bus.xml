@@ -140,7 +140,7 @@
             app:layout_constraintVertical_bias="0.12" />
 
         <EditText
-            android:id="@+id/editTextRoute"
+            android:id="@+id/editTextBusRoute"
             android:layout_width="320dp"
             android:layout_height="48dp"
             android:layout_marginBottom="280dp"

@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (result != -1) {
                 Log.d("SQLite", "User inserted successfully: " +
-                        "Username =" + username + ", Email =" + email + ", Password =" + password);
+                        "Username=" + username + ", Email=" + email + ", Password" + password);
             } else {
                 Log.e("SQLite", "Failed to insert user");
             }
@@ -173,7 +173,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (result != -1) {
                 Log.d("SQLite", "Bus inserted successfully: " +
-                        "Bus Number =" + busNumber + ", Start Location =" + startLocation + ", End Location =" + endLocation);
+                        "Bus Number=" + busNumber + ", Start Location=" + startLocation + ", End Location" + endLocation);
             } else {
                 Log.e("SQLite", "Failed to insert bus");
             }
@@ -188,4 +188,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 }
-

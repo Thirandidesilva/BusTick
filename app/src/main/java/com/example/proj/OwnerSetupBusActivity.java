@@ -64,7 +64,7 @@ public class OwnerSetupBusActivity extends AppCompatActivity {
         EditText editTextBusNumber = findViewById(R.id.editTextBus);
         EditText editTextStartLocation = findViewById(R.id.editTextStart);
         EditText editTextEndLocation = findViewById(R.id.editTextEnd);
-        EditText editTextRoute = findViewById(R.id.editTextRoute);
+        EditText editTextRoute = findViewById(R.id.editTextBusRoute);
         EditText editTextDriver = findViewById(R.id.editTextDriver);
         EditText editTextSeats = findViewById(R.id.editTextSeat);
 
