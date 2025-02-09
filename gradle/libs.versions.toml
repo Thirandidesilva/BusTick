@@ -10,6 +10,9 @@ constraintlayout = "2.2.0"
 playServicesCastFramework = "22.0.0"
 playServicesMaps = "18.1.0"
 
+osmdroid = "6.1.14"
+play_service_location = "18.0.0"
+
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -20,6 +23,8 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-cast-framework = { group = "com.google.android.gms", name = "play-services-cast-framework", version.ref = "playServicesCastFramework" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+
+osmdroid = { module = "org.osmdroid:osmdroid-android", version.ref = "osmdroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
